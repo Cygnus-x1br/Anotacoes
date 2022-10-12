@@ -1,0 +1,14 @@
+<h1>Index</h1>
+
+<hr>
+
+<?php
+
+// print_r($this->viewData->dados);
+// foreach ($this->viewData->dados as $indice => $valor) {
+foreach ($this->viewData->dados as $indice => $produto) {
+    // echo $valor . '<br>';
+    echo $produto['id'] . ' - ' . $produto['descricao'] . ' - ' . $produto['preco'] . '<br>';
+}
+
+?>
