@@ -14,16 +14,7 @@ class IndexController extends Action
 
     public function index()
     {
-
-        //$conn = Connection::getDB();
-        //$produto = new Produto($conn);
-
-        $produto = Container::getModel('Produto');
-        $produtos = $produto->getProdutos();
-
-        $this->viewData->dados = $produtos;
-
-        $this->render('index', 'layout1');
+        $this->render('index', 'layout');
     }
 
     public function sobreNos()
