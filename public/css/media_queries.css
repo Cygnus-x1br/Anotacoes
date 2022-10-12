@@ -1,0 +1,156 @@
+@media screen and (max-width: 1020px) {
+}
+@media screen and (max-width: 930px) {
+  section.destaque {
+    max-height: 100%;
+  }
+  .box-vagas {
+    flex-direction: column;
+    justify-content: flex-end;
+    max-height: 100%;
+    max-width: 450px;
+  }
+
+  .box-vagas article {
+    width: 100%;
+  }
+  article.vagas-destaque {
+    max-height: 100%;
+  }
+  article.vagas-destaque article {
+    max-height: 100%;
+    margin-bottom: 20px;
+  }
+
+  .container aside a {
+    margin-top: 60px;
+  }
+  .flex-container-center {
+    text-align: center;
+  }
+  section.navbar nav ul li {
+    flex-wrap: wrap;
+  }
+  section.navbar nav .identificacao {
+    max-height: 56px;
+    min-width: 150px;
+  }
+  section.navbar nav a {
+    max-height: 56px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .float {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .textos-conteudo .sobre-img {
+    float: none;
+    clear: both;
+    margin: 0;
+  }
+
+  .enderecos {
+    flex-direction: column;
+    margin: 30px 50px 0px;
+  }
+  .endereco {
+    margin-bottom: 30px;
+  }
+
+  .email {
+    flex-direction: column;
+    text-align: center;
+  }
+  .email a {
+    margin-bottom: 15px;
+  }
+  a.fale_conosco {
+    margin-bottom: 15px;
+  }
+  div.icons {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  body {
+    min-width: 320px;
+  }
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 150px;
+  }
+
+  header .logo-img {
+    margin: 0;
+    display: none;
+  }
+
+  header div {
+    display: none;
+  }
+
+  nav ul {
+    flex-flow: column;
+    justify-content: flex-start;
+  }
+  nav ul li a {
+    width: 100%;
+  }
+
+  .blind-line {
+    height: 1px;
+    width: 45%;
+    background: radial-gradient(#1e5373, #fff);
+    align-self: center;
+  }
+
+  section.destaque {
+    max-height: 100%;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+  .box-vagas {
+    flex-direction: column;
+    justify-content: flex-end;
+    max-height: 100%;
+  }
+
+  .box-vagas article {
+    min-width: 300px;
+  }
+
+  .container aside {
+    max-width: 100%;
+    justify-content: space-around;
+  }
+
+  .container aside .redes-icons {
+    width: 100%;
+    flex-direction: row;
+    align-content: space-around;
+    justify-content: space-around;
+  }
+
+  .container aside .redes-icons a {
+    margin-top: 15px;
+  }
+  article.vagas-destaque {
+    max-height: 100%;
+  }
+  .flex-container-center {
+    text-align: center;
+  }
+  nav ul li a.curriculo {
+    margin: 25px 50px;
+    padding: 20px;
+    border-radius: 25px;
+  }
+}

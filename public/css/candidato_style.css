@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+header {
+  /* display: flex;
+  justify-content: space-around; */
+  background: linear-gradient(to bottom, #336988, #ccc);
+  color: #fff0c6;
+  height: 150px;
+}
+
+header img {
+  margin: 0;
+}
+
+header img.texto-logo {
+  filter: opacity(50%) hue-rotate(50deg) saturate(200%);
+}
+
+footer {
+  height: 60px;
+  text-align: center;
+  background: linear-gradient(to top, #336988, #ccc);
+  margin-top: 40px;
+}
+
+footer p {
+  margin-top: 0;
+  padding: 20px;
+}
+
+trix-editor {
+  min-height: 300px;
+}
