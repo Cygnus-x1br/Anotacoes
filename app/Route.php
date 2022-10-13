@@ -17,6 +17,11 @@ class Route extends \MF\Init\Bootstrap
             'controller' => 'SigninController',
             'action' => 'signin'
         );
+        $routes['add_user'] = array(
+            'route' => '/add_user',
+            'controller' => 'UserController',
+            'action' => 'add_user'
+        );
 
 
         $this->setRoutes($routes);
