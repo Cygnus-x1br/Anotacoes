@@ -12,8 +12,10 @@ use App\Models\Info;
 class IndexController extends Action
 {
 
+
     public function index()
     {
+        $this->setHtmlData->signed = 'disabled';
         $this->render('index', 'layout');
     }
 

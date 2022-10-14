@@ -10,6 +10,7 @@ abstract class Action
     public function __construct()
     {
         $this->viewData = new \stdClass();
+        $this->setHtmlData = new \stdClass();
     }
 
     protected function render($view, $layout)

@@ -77,4 +77,24 @@ class User extends Model
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function login()
+    {
+        $user = "SELECT * FROM tb_users WHERE username=:username AND passwd=:passwd";
+        $stmt = $this->db->query($user);
+        $stmt->bindValue(':username', $this->__get('username'));
+        $stmt->bindValue(':passwd', $this->__get('passwd'));
+        $stmt->execute();
+
+        $user_authenticated = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        if ($user_authenticated['username'] && $user_authenticated['IDUSER']) {
+            $this->__set('iduser', $user_authenticated['IDUSER']);
+            $this->__set('username', $user_authenticated['username']);
+            $this->__set('user_name', $user_authenticated['user_name']);
+            $this->__set('permission', $user_authenticated['permission']);
+        }
+
+        return $this;
+    }
 }
