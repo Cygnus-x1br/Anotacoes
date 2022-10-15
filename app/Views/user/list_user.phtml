@@ -1,0 +1,10 @@
+<h1>Listagem de usuario</h1>
+
+<?php foreach ($this->viewData->listagem_usuarios as $usuario) { ?>
+    <ul>
+        <li><?= $usuario['username'] ?></li>
+        <li><?= $usuario['user_name'] ?></li>
+        <li><?= $usuario['permission'] ?></li>
+    </ul>
+
+<?php } ?>

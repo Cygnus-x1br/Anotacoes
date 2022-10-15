@@ -23,8 +23,11 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Lista de Assuntos</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item <?php echo $this->setHtmlData->signed === 'disabled' ? 'd-1' : 'd-none'; ?>">
                             <a class="nav-link" href="/signin">Sign In</a>
+                        </li>
+                        <li class="nav-item <?php echo $this->setHtmlData->signed === 'disabled' ? 'd-none' : 'd-1'; ?>">
+                            <a class="nav-link" href="/log_out">Log out</a>
                         </li>
                         <li class="nav-item">
                             <div class="dropdown">
@@ -34,7 +37,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="#">Anotação</a></li>
                                     <li><a class="dropdown-item" href="#">Assunto</a></li>
-                                    <li><a class="dropdown-item" href="#">Usuário</a></li>
+                                    <li><a class="dropdown-item" href="list_user">Usuário</a></li>
                                 </ul>
                             </div>
                         </li>

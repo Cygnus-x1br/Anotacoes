@@ -17,6 +17,11 @@ class Route extends \MF\Init\Bootstrap
             'controller' => 'SigninController',
             'action' => 'signin'
         );
+        $routes['log_out'] = array(
+            'route' => '/log_out',
+            'controller' => 'SigninController',
+            'action' => 'log_out'
+        );
         $routes['authenticate'] = array(
             'route' => '/authenticate',
             'controller' => 'SigninController',
@@ -26,6 +31,11 @@ class Route extends \MF\Init\Bootstrap
             'route' => '/add_user',
             'controller' => 'UserController',
             'action' => 'add_user'
+        );
+        $routes['list_user'] = array(
+            'route' => '/list_user',
+            'controller' => 'UserController',
+            'action' => 'list_user'
         );
 
 

@@ -13,7 +13,7 @@ abstract class Action
         $this->setHtmlData = new \stdClass();
     }
 
-    protected function render($view, $layout)
+    protected function render($view, $layout = 'layout')
     {
 
         $this->viewData->page = $view;
