@@ -2,10 +2,14 @@
 
     <h1>Adiciona Assunto</h1>
     <div class="mb-3">
-        <form action="save_subject" method="POST">
 
+        <form action="<?= isset($this->viewData->subject) ? 'edit_subject' : 'save_subject' ?>" method="POST" enctype="multipart/form-data">
+
+            <?= $this->viewData->subject['subject'] ?>
             <label for="subject" class="form-label">Subject</label>
-            <input type="text" class="form-control" name="subject" id="subject">
+            <input type="text" class="form-control" name="subject" id="subject" value="<?= $this->viewData->subject['subject'] ?? '' ?>">
+            <label for="subject_file" class="form-label">Subject</label>
+            <input type="file" class="form-control" id="subject_file" aria-describedby="inputGroupFileAddon04" value="<?= $this->viewData->subject['subject_image'] ?? '' ?>" aria-label="Upload" name="upload_file" accept="image/jpeg,.gif,.png">
             <button type="submit" class="btn btn-secondary mt-4">Salvar</button>
         </form>
     </div>

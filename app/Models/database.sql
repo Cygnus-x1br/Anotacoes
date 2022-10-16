@@ -1,7 +1,5 @@
- personalCREATE DATABASE personal_notes;
-
+personalCREATE DATABASE personal_notes;
 USE personal_notes;
-
 CREATE TABLE tb_users (
     IDUSER INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(20) NOT NULL,
@@ -9,7 +7,6 @@ CREATE TABLE tb_users (
     user_name VARCHAR(100) NOT NULL,
     permission CHAR(1) NOT NULL
 );
-
 CREATE TABLE tb_notes (
     IDNOTES INT PRIMARY KEY AUTO_INCREMENT,
     ID_SUBJECT INT NOT NULL,
@@ -18,16 +15,15 @@ CREATE TABLE tb_notes (
     note TEXT NOT NULL,
     note_date DATE
 );
-
 CREATE TABLE tb_subject (
     IDSUBJECT INT PRIMARY KEY AUTO_INCREMENT,
-    subject VARCHAR(100)
+    subject VARCHAR(100),
+    subject_image VARCHAR(100)
 );
 -- I - Installation
 -- F - Configuration
 -- C - Command
 -- T - Text Information
 -- B - Command Block
-
-ALTER TABLE tb_notes ADD CONSTRAINT FK_SUBJECT_NOTE
-FOREIGN KEY(ID_SUBJECT) REFERENCES tb_subject(IDSUBJECT);
+ALTER TABLE tb_notes
+ADD CONSTRAINT FK_SUBJECT_NOTE FOREIGN KEY(ID_SUBJECT) REFERENCES tb_subject(IDSUBJECT);

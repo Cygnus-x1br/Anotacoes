@@ -53,4 +53,13 @@ class Notes extends Model
 
         return $this;
     }
+
+    public function getLastTexts()
+    {
+        $notes = "SELECT * FROM tb_notes LIMIT 3";
+        $stmt = $this->db->prepare($notes);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }

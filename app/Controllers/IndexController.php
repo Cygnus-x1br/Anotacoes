@@ -13,6 +13,14 @@ class IndexController extends Action
         if (!$_SESSION['id']) {
             $this->setHtmlData->signed = 'disabled';
         }
+        $last_texts = Container::getModel('notes');
+        $show_last = $last_texts->getLastTexts();
+        $this->viewData->ultimas_notas = $show_last;
+        $subject = Container::getModel('subjects');
+        $subjects = $subject->getAllSubjects();
+        $this->viewData->subjects = $subjects;
+
+
         $this->render('index');
     }
 }

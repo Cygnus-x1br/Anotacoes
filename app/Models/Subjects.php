@@ -8,6 +8,7 @@ class Subjects extends Model
 {
     private $idsubject;
     private $subject;
+    private $subject_image;
 
     public function __get($atribute)
     {
@@ -34,14 +35,25 @@ class Subjects extends Model
         $stmt->bindValue(':idsubject', $this->__get('idsubject'));
         $stmt->execute();
 
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
     public function addSubject()
     {
-        $subject = "INSERT INTO tb_subject(subject) VALUES(:subject)";
+        $subject = "INSERT INTO tb_subject(subject, subject_image) VALUES(:subject, :subject_image)";
         $stmt = $this->db->prepare($subject);
         $stmt->bindValue(':subject', $this->__get('subject'));
+        $stmt->bindValue(':subject_image', $this->__get('subject_image'));
+        $stmt->execute();
+
+        return $this;
+    }
+    public function editSubject()
+    {
+        $subject = "UPDATE tb_subject SET subject=:subject, subject_image=:subject_image";
+        $stmt = $this->db->prepare($subject);
+        $stmt->bindValue(':subject', $this->__get('subject'));
+        $stmt->bindValue(':subject_image', $this->__get('subject_image'));
         $stmt->execute();
 
         return $this;

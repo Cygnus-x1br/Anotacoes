@@ -57,6 +57,11 @@ class Route extends \MF\Init\Bootstrap
             'controller' => 'SubjectController',
             'action' => 'add_subject'
         );
+        $routes['edit_subject'] = array(
+            'route' => '/edit_subject',
+            'controller' => 'SubjectController',
+            'action' => 'edit_subject'
+        );
         $routes['save_subject'] = array(
             'route' => '/save_subject',
             'controller' => 'SubjectController',
