@@ -16,7 +16,7 @@ class UserController extends Action
     public function list_user()
     {
         SigninController::validaAutenticacao();
-        $users = Container::getModel('user');
+        $users = Container::getModel('users');
         $list_users = $users->getAllUsers();
 
         $this->viewData->listagem_usuarios = $list_users;

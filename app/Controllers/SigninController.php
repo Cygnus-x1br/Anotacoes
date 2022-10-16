@@ -21,7 +21,7 @@ class SigninController extends Action
             echo 'Digite um nome de usuário válido';
             die();
         };
-        $user = Container::getModel('User');
+        $user = Container::getModel('users');
         $user->__set('username', $_POST['username']);
         $user->__set('passwd', $_POST['passwd']);
         $user->login();

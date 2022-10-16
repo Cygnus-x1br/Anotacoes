@@ -1,4 +1,4 @@
-CREATE DATABASE personal_notes;
+ personalCREATE DATABASE personal_notes;
 
 USE personal_notes;
 

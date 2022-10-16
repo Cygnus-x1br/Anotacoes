@@ -4,7 +4,7 @@ namespace App\Models;
 
 use MF\Model\Model;
 
-class User extends Model
+class Users extends Model
 {
 
     private $iduser;
