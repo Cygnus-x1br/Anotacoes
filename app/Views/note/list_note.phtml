@@ -24,7 +24,23 @@
                         }
                     }
                     $note['ID_SUBJECT'] ?></li>
-                <li><?= $note['type_of_note'] ?></li>
+                <li><?php switch ($note['type_of_note']) {
+                        case 'I':
+                            echo 'Instalação';
+                            break;
+                        case 'F':
+                            echo 'Configuração';
+                            break;
+                        case 'C':
+                            echo 'Comandos';
+                            break;
+                        case 'T':
+                            echo 'Informações';
+                            break;
+                        case 'B':
+                            echo 'Bloco de Código';
+                            break;
+                    } ?></li>
                 <li><?= $note['note_title'] ?></li>
                 <li><?= $note['note_date'] ?></li>
                 <div class="d-flex flex-row">

@@ -52,7 +52,8 @@ class SigninController extends Action
     {
         session_start();
         if (!$_SESSION['id'] || !$_SESSION['nome']) {
-            header('Location: login?login=error');
+            header('Location: signin?login=error');
+            die();
         }
     }
 }
