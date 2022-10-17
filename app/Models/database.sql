@@ -1,4 +1,4 @@
-personalCREATE DATABASE personal_notes;
+CREATE DATABASE personal_notes;
 USE personal_notes;
 CREATE TABLE tb_users (
     IDUSER INT PRIMARY KEY AUTO_INCREMENT,
@@ -27,3 +27,5 @@ CREATE TABLE tb_subject (
 -- B - Command Block
 ALTER TABLE tb_notes
 ADD CONSTRAINT FK_SUBJECT_NOTE FOREIGN KEY(ID_SUBJECT) REFERENCES tb_subject(IDSUBJECT);
+INSERT INTO tb_users(username, passwd, user_name, permission)
+VALUES('jean', sha1('@Czf0704'), 'Jean Marcel', 'A');
