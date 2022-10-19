@@ -1,0 +1,55 @@
+<div class="container mt-5">
+    <h1 class="text-center mb-3">Anotações</h1>
+
+    <div class="row justify-content-end mb-5">
+        <div class="col-2 ">
+            <a href="add_note" class="btn btn-success ">Adicionar nova nota</a>
+        </div>
+    </div>
+    <hr>
+    <div class="listagem row">
+        <ul class="ps-5 pe-5">
+            <li class="col-2">Assunto</li>
+            <li class="col-1">Tipo</li>
+            <li class="col-6">Titulo</li>
+            <li class="col-1">Data</li>
+            <li class="col-1"></li>
+            <li class="col-1"></li>
+        </ul>
+        <?php foreach ($this->viewData->listagem_anotacoes as $note) { ?>
+            <ul class="ps-5 pe-5">
+                <li class="col-2"><?php foreach ($this->viewData->listagem_assuntos as $subject) {
+                                        if ($subject['IDSUBJECT'] == $note['ID_SUBJECT']) {
+                                            echo $subject['subject'];
+                                        }
+                                    }
+                                    $note['ID_SUBJECT'] ?></li>
+                <li class="col-1"><?php switch ($note['type_of_note']) {
+                                        case 'I':
+                                            echo 'Instalação';
+                                            break;
+                                        case 'F':
+                                            echo 'Configuração';
+                                            break;
+                                        case 'C':
+                                            echo 'Comandos';
+                                            break;
+                                        case 'T':
+                                            echo 'Informações';
+                                            break;
+                                        case 'B':
+                                            echo 'Bloco de Código';
+                                            break;
+                                    } ?></li>
+                <li class="col-6"><?= $note['note_title'] ?></li>
+                <li class="col-1"><?= $note['note_date'] ?></li>
+                <div class="d-flex flex-row col-2">
+                    <li class="me-2"><a href="edit_note?id=<?= $note['IDNOTE'] ?>" class=" btn btn-success">Edit</a></li>
+                    <li class="me-2"><a href="delete_note?id=<?= $note['IDNOTE'] ?>" class="btn btn-danger">Delete</a></li>
+                </div>
+            </ul>
+        <?php } ?>
+    </div>
+
+
+</div>

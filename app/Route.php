@@ -37,21 +37,38 @@ class Route extends \MF\Init\Bootstrap
             'controller' => 'UserController',
             'action' => 'list_user'
         );
+
         $routes['add_note'] = array(
             'route' => '/add_note',
             'controller' => 'NoteController',
             'action' => 'add_note'
+        );
+        $routes['edit_note'] = array(
+            'route' => '/edit_note',
+            'controller' => 'NoteController',
+            'action' => 'edit_note'
         );
         $routes['save_note'] = array(
             'route' => '/save_note',
             'controller' => 'NoteController',
             'action' => 'save_note'
         );
-        $routes['list_note'] = array(
-            'route' => '/list_note',
+        $routes['change_note'] = array(
+            'route' => '/change_note',
             'controller' => 'NoteController',
-            'action' => 'list_note'
+            'action' => 'change_note'
         );
+        $routes['delete_note'] = array(
+            'route' => '/delete_note',
+            'controller' => 'NoteController',
+            'action' => 'delete_note'
+        );
+        $routes['list_notes'] = array(
+            'route' => '/list_notes',
+            'controller' => 'NoteController',
+            'action' => 'list_notes'
+        );
+
         $routes['add_subject'] = array(
             'route' => '/add_subject',
             'controller' => 'SubjectController',
@@ -66,6 +83,16 @@ class Route extends \MF\Init\Bootstrap
             'route' => '/save_subject',
             'controller' => 'SubjectController',
             'action' => 'save_subject'
+        );
+        $routes['change_subject'] = array(
+            'route' => '/change_subject',
+            'controller' => 'SubjectController',
+            'action' => 'change_subject'
+        );
+        $routes['delete_subject'] = array(
+            'route' => '/delete_subject',
+            'controller' => 'SubjectController',
+            'action' => 'delete_subject'
         );
         $routes['list_subjects'] = array(
             'route' => '/list_subjects',

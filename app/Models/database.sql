@@ -8,7 +8,7 @@ CREATE TABLE tb_users (
     permission CHAR(1) NOT NULL
 );
 CREATE TABLE tb_notes (
-    IDNOTES INT PRIMARY KEY AUTO_INCREMENT,
+    IDNOTE INT PRIMARY KEY AUTO_INCREMENT,
     ID_SUBJECT INT NOT NULL,
     note_title VARCHAR(200) NOT NULL,
     type_of_note ENUM('I', 'F', 'C', 'T', 'B'),

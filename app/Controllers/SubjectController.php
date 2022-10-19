@@ -17,16 +17,24 @@ class SubjectController extends Action
         $this->render('list_subjects');
     }
 
-    public function set_subject()
+    public function set_subject($edit = '')
     {
         SigninController::validaAutenticacao();
-        if (!empty($_FILES)) {
+
+        var_dump($_FILES);
+        if (($_FILES['upload_file']['size'] !== 0)) {
             $file_save = $this->upload_file();
         }
         $subjects = Container::getModel('subjects');
+
         $subjects->__set('subject', $_POST['subject']);
         $subjects->__set('subject_image', $file_save);
-        $subjects->addSubject();
+        if ($edit == 'edit') {
+            $subjects->__set('idsubject', $_POST['idsubject']);
+            $subjects->editSubject();
+        } else {
+            $subjects->addSubject();
+        }
 
         header('Location: list_subjects');
     }
@@ -35,6 +43,13 @@ class SubjectController extends Action
     {
         if (!empty($_POST['subject'])) {
             $this->set_subject();
+        };
+    }
+
+    public function change_subject()
+    {
+        if (!empty($_POST['subject'])) {
+            $this->set_subject('edit');
         };
     }
 
@@ -53,6 +68,14 @@ class SubjectController extends Action
 
         $this->render('add_subject');
     }
+    public function delete_subject()
+    {
+        $subject = Container::getModel('subjects');
+        $subject->__set('idsubject', $_GET['id']);
+        $subject->deleteSubject();
+
+        header('Location: list_subjects');
+    }
 
     public function upload_file()
     {
@@ -70,12 +93,13 @@ class SubjectController extends Action
             exit;
         }
         $tmp_file = $file['tmp_name'];
-
         $path = './img/';
         $save_file = $path . $_POST['subject'] . '_image' . '.' . $extensao;
         $teste = move_uploaded_file($tmp_file, $save_file);
         if ($teste == 1) {
             return $save_file;
+        } else {
+            return '';
         }
     }
 }

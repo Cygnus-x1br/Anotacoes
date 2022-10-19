@@ -38,7 +38,7 @@ class Notes extends Model
         $stmt->bindValue(':idnote', $this->__get('idnote'));
         $stmt->execute();
 
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
     public function addNote()
@@ -49,6 +49,31 @@ class Notes extends Model
         $stmt->bindValue(':note_title', $this->__get('note_title'));
         $stmt->bindValue(':type_of_note', $this->__get('type_of_note'));
         $stmt->bindValue(':note', $this->__get('note'));
+        $stmt->execute();
+
+        return $this;
+    }
+    public function editNote()
+    {
+        $note = "UPDATE tb_notes SET ID_SUBJECT=:id_subject, note_title=:note_title, type_of_note=:type_of_note, note=:note WHERE IDNOTE=:idnote";
+        $stmt = $this->db->prepare($note);
+        $stmt->bindValue(':idnote', $this->__get('idnote'));
+        $stmt->bindValue(':id_subject', $this->__get('id_subject'));
+        $stmt->bindValue(':note_title', $this->__get('note_title'));
+        $stmt->bindValue(':type_of_note', $this->__get('type_of_note'));
+        $stmt->bindValue(':note', $this->__get('note'));
+        $stmt->execute();
+
+        return $this;
+    }
+
+
+
+    public function deleteNote()
+    {
+        $note = "DELETE FROM tb_notes WHERE IDNOTE=:idnote";
+        $stmt = $this->db->prepare($note);
+        $stmt->bindValue('idnote', $this->__get('idnote'));
         $stmt->execute();
 
         return $this;
