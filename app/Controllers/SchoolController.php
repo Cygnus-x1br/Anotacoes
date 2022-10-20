@@ -21,14 +21,16 @@ class SchoolController extends Action
     {
         SigninController::validaAutenticacao();
 
+        $schools = Container::getModel('schools');
         if (($_FILES['school_logo']['size'] !== 0)) {
             $file_save = $this->upload_file();
+            $schools->__set('school_logo', $file_save);
+        } else if ($edit == 'edit' && ($_FILES['school_logo']['size'] == 0)) {
+            $schools->__set('school_logo', $_POST['school_logo']);
         }
-        $schools = Container::getModel('schools');
 
         $schools->__set('school_name', $_POST['school_name']);
         $schools->__set('school_link', $_POST['school_link']);
-        $schools->__set('school_logo', $file_save);
         if ($edit == 'edit') {
             $schools->__set('idschool', $_POST['idschool']);
             $schools->editSchool();

@@ -13,6 +13,7 @@
             <label for="school_logo" class="form-label">Logo</label>
             <?php if (isset($this->viewData->school)) { ?>
                 <div class="alert alert-primary" role="alert">
+                    <input type="hidden" name="school_logo" value="<?= $this->viewData->school['school_logo'] ?>">
                     <p>Last saved file: <span><?= $this->viewData->school['school_logo'] ?? 'No file saved' ?></span></p>
                 <?php } ?>
                 </div>

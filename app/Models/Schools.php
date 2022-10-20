@@ -49,6 +49,18 @@ class Schools extends Model
 
         return $this;
     }
+    public function editSchool()
+    {
+        $school = "UPDATE tb_schools SET school_name=:school_name, school_link=:school_link, school_logo=:school_logo WHERE IDSCHOOL = :idschool";
+        $stmt = $this->db->prepare($school);
+        $stmt->bindValue(':idschool', $this->__get('idschool'));
+        $stmt->bindValue(':school_name', $this->__get('school_name'));
+        $stmt->bindValue(':school_link', $this->__get('school_link'));
+        $stmt->bindValue(':school_logo', $this->__get('school_logo'));
+        $stmt->execute();
+
+        return $this;
+    }
     public function deleteSchool()
     {
         $school = "DELETE FROM tb_schools WHERE IDSCHOOL=:idschool";

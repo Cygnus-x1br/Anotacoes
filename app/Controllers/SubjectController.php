@@ -26,7 +26,7 @@ class SubjectController extends Action
         if (($_FILES['upload_file']['size'] !== 0)) {
             $file_save = $this->upload_file();
             $subjects->__set('subject_image', $file_save);
-        } else if ($edit == 'edit' && ($_FILES['upload_file']['size'] !== 0)) {
+        } else if ($edit == 'edit' && ($_FILES['upload_file']['size'] == 0)) {
             $subjects->__set('subject_image', $_POST['subject_image']);
         }
         $subjects->__set('subject', $_POST['subject']);
