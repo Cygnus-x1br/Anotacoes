@@ -23,4 +23,34 @@ class IndexController extends Action
 
         $this->render('index');
     }
+
+    public function view_note()
+    {
+        if (isset($_GET['page']) && $_GET['page'] == 'viewAll') {
+            $this->setHtmlData->return = 'view_all_notes';
+        } else {
+            $this->setHtmlData->return = '/';
+        }
+        $view_note = Container::getModel('notes');
+        $view_note->__set('idnote', $_GET['id']);
+        $show_note = $view_note->getNote();
+        $this->viewData->note = $show_note;
+        $subject = Container::getModel('subjects');
+        $subjects = $subject->getAllSubjects();
+        $this->viewData->subjects = $subjects;
+
+        $this->render('view_note');
+    }
+
+    public function view_all_notes()
+    {
+        $view_notes = Container::getModel('notes');
+        $show_notes = $view_notes->getAllNotes();
+        $this->viewData->notes = $show_notes;
+        $subject = Container::getModel('subjects');
+        $subjects = $subject->getAllSubjects();
+        $this->viewData->subjects = $subjects;
+
+        $this->render('view_all_notes');
+    }
 }

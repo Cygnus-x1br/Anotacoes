@@ -10,7 +10,10 @@
     <div class="listagem-sem-cabecalho row">
         <?php foreach ($this->viewData->listagem_assuntos as $subject) { ?>
             <ul class="justify-content-between ps-5 pe-5">
-                <li><?= $subject['subject'] ?></li>
+                <div class="row flex-fill">
+                    <li class="col-2"><img src="<?= $subject['subject_image'] ?>" alt="" style="height: 40px;"></li>
+                    <li class="col"><?= $subject['subject'] ?></li>
+                </div>
                 <div class="d-flex flex-row">
                     <li class="me-2"><a href="edit_subject?id=<?= $subject['IDSUBJECT'] ?>" class="btn btn-success">Edit</a></li>
                     <li class="me-2"><a href="delete_subject?id=<?= $subject['IDSUBJECT'] ?>" class="btn btn-danger">Delete</a></li>

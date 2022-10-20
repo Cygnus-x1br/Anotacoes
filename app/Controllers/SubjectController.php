@@ -21,14 +21,16 @@ class SubjectController extends Action
     {
         SigninController::validaAutenticacao();
 
-        var_dump($_FILES);
-        if (($_FILES['upload_file']['size'] !== 0)) {
-            $file_save = $this->upload_file();
-        }
         $subjects = Container::getModel('subjects');
 
+        if (($_FILES['upload_file']['size'] !== 0)) {
+            $file_save = $this->upload_file();
+            $subjects->__set('subject_image', $file_save);
+        } else if ($edit == 'edit' && ($_FILES['upload_file']['size'] !== 0)) {
+            $subjects->__set('subject_image', $_POST['subject_image']);
+        }
         $subjects->__set('subject', $_POST['subject']);
-        $subjects->__set('subject_image', $file_save);
+        $subjects->__set('subject_link', $_POST['subject_link']);
         if ($edit == 'edit') {
             $subjects->__set('idsubject', $_POST['idsubject']);
             $subjects->editSubject();

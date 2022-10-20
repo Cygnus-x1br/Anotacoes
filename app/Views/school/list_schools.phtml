@@ -1,0 +1,24 @@
+<div class="container mt-5">
+    <h1 class="text-center mb-3">Listagem de Plataformas</h1>
+
+    <div class="row justify-content-end mb-5">
+        <div class="col-2 ">
+            <a href="add_school" class="btn btn-success ">Adicionar Escola</a>
+        </div>
+    </div>
+    <hr>
+    <div class="listagem-sem-cabecalho row">
+        <?php foreach ($this->viewData->list_schools as $school) { ?>
+            <ul class="justify-content-between ps-5 pe-5">
+                <div class="row flex-fill">
+                    <li class="col-2"><img src="<?= $school['school_logo'] ?>" alt="" style="height: 40px;"></li>
+                    <li class="col"><a href="<?= $school['school_link'] ?>" class="nav-link"><?= $school['school_name'] ?></a></li>
+                </div>
+                <div class="d-flex flex-row">
+                    <li class="me-2"><a href="edit_school?id=<?= $school['IDSCHOOL'] ?>" class="btn btn-success">Edit</a></li>
+                    <li class="me-2"><a href="delete_school?id=<?= $school['IDSCHOOL'] ?>" class="btn btn-danger">Delete</a></li>
+                </div>
+            </ul>
+        <?php } ?>
+    </div>
+</div>

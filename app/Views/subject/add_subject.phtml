@@ -1,5 +1,4 @@
-<div class="container">
-
+<div class="container mt-5">
     <h1>Adiciona Assunto</h1>
     <div class="mb-3">
 
@@ -7,10 +6,13 @@
             <input type="hidden" name="idsubject" value="<?= $this->viewData->subject['IDSUBJECT'] ?? '' ?>">
             <label for="subject" class="form-label">Subject</label>
             <input type="text" class="form-control" name="subject" id="subject" value="<?= $this->viewData->subject['subject'] ?? '' ?>">
+            <label for="subject_link" class="form-label">Link repositório</label>
+            <input type="text" class="form-control" name="subject_link" id="subject_link" value="<?= $this->viewData->subject['subject_link'] ?? '' ?>">
             <label for="subject_file" class="form-label">Subject</label>
             <?php if (isset($this->viewData->subject)) { ?>
                 <div class="alert alert-primary" role="alert">
                     <p>Last saved file: <span><?= $this->viewData->subject['subject_image'] ?? 'No file saved' ?></span></p>
+                    <input type="hidden" name="subject_image" value="<?= $this->viewData->subject['subject_image'] ?>">
                 <?php } ?>
                 </div>
                 <input type="file" class="form-control" id="subject_file" aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="upload_file" accept="image/jpeg,.gif,.png">

@@ -12,6 +12,22 @@ class Route extends \MF\Init\Bootstrap
             'controller' => 'IndexController',
             'action' => 'index'
         );
+        $routes['view_all_notes'] = array(
+            'route' => '/view_all_notes',
+            'controller' => 'IndexController',
+            'action' => 'view_all_notes'
+        );
+        $routes['view_note'] = array(
+            'route' => '/view_note',
+            'controller' => 'IndexController',
+            'action' => 'view_note'
+        );
+        $routes['list_notes'] = array(
+            'route' => '/list_notes',
+            'controller' => 'IndexController',
+            'action' => 'list_notes'
+        );
+
         $routes['signin'] = array(
             'route' => '/signin',
             'controller' => 'SigninController',
@@ -98,6 +114,37 @@ class Route extends \MF\Init\Bootstrap
             'route' => '/list_subjects',
             'controller' => 'SubjectController',
             'action' => 'list_subjects'
+        );
+
+        $routes['add_school'] = array(
+            'route' => '/add_school',
+            'controller' => 'SchoolController',
+            'action' => 'add_school'
+        );
+        $routes['edit_school'] = array(
+            'route' => '/edit_school',
+            'controller' => 'SchoolController',
+            'action' => 'edit_school'
+        );
+        $routes['save_school'] = array(
+            'route' => '/save_school',
+            'controller' => 'SchoolController',
+            'action' => 'save_school'
+        );
+        $routes['change_school'] = array(
+            'route' => '/change_school',
+            'controller' => 'SchoolController',
+            'action' => 'change_school'
+        );
+        $routes['delete_school'] = array(
+            'route' => '/delete_school',
+            'controller' => 'SchoolController',
+            'action' => 'delete_school'
+        );
+        $routes['list_schools'] = array(
+            'route' => '/list_schools',
+            'controller' => 'SchoolController',
+            'action' => 'list_schools'
         );
 
 

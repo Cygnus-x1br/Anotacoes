@@ -9,6 +9,7 @@ class Subjects extends Model
     private $idsubject;
     private $subject;
     private $subject_image;
+    private $subject_link;
 
     public function __get($atribute)
     {
@@ -40,21 +41,23 @@ class Subjects extends Model
 
     public function addSubject()
     {
-        $subject = "INSERT INTO tb_subject(subject, subject_image) VALUES(:subject, :subject_image)";
+        $subject = "INSERT INTO tb_subject(subject, subject_image, subject_link) VALUES(:subject, :subject_image, :subject_link)";
         $stmt = $this->db->prepare($subject);
         $stmt->bindValue(':subject', $this->__get('subject'));
         $stmt->bindValue(':subject_image', $this->__get('subject_image'));
+        $stmt->bindValue(':subject_link', $this->__get('subject_link'));
         $stmt->execute();
 
         return $this;
     }
     public function editSubject()
     {
-        $subject = "UPDATE tb_subject SET subject=:subject, subject_image=:subject_image WHERE IDSUBJECT=:idsubject";
+        $subject = "UPDATE tb_subject SET subject=:subject, subject_image=:subject_image, subject_link=:subject_link WHERE IDSUBJECT=:idsubject";
         $stmt = $this->db->prepare($subject);
         $stmt->bindValue(':idsubject', $this->__get('idsubject'));
         $stmt->bindValue(':subject', $this->__get('subject'));
         $stmt->bindValue(':subject_image', $this->__get('subject_image'));
+        $stmt->bindValue(':subject_link', $this->__get('subject_link'));
         $stmt->execute();
 
         return $this;

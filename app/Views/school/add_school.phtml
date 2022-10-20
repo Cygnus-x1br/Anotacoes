@@ -1,0 +1,26 @@
+<div class="container mt-5">
+
+    <h1>Adiciona Plataforma</h1>
+    <div class="mb-3">
+
+        <form action="<?= isset($this->viewData->school) ? 'change_school' : 'save_school' ?>" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="idschool" value="<?= $this->viewData->school['IDSCHOOL'] ?? '' ?>">
+            <label for="school_name" class="form-label">Nome da Escola</label>
+            <input type="text" class="form-control" name="school_name" id="school_name" value="<?= $this->viewData->school['school_name'] ?? '' ?>">
+            <label for="school_link" class="form-label">Link da Escola</label>
+            <input type="text" class="form-control" name="school_link" id="school_link" value="<?= $this->viewData->school['school_link'] ?? '' ?>">
+
+            <label for="school_logo" class="form-label">Logo</label>
+            <?php if (isset($this->viewData->school)) { ?>
+                <div class="alert alert-primary" role="alert">
+                    <p>Last saved file: <span><?= $this->viewData->school['school_logo'] ?? 'No file saved' ?></span></p>
+                <?php } ?>
+                </div>
+                <input type="file" class="form-control" id="school_logo" aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="school_logo" accept="image/jpeg,.gif,.png">
+                <div class="row">
+                    <button type="submit" class="btn btn-secondary mt-4 me-2 col-2">Salvar</button>
+                    <a href="list_schools" class="btn btn-danger mt-4  ms-2 col-2">Voltar</a>
+                </div>
+        </form>
+    </div>
+</div>

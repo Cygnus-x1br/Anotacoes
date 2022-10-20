@@ -65,15 +65,22 @@
         <!-- Three columns of text below the carousel -->
         <div class="row">
             <?php foreach ($this->viewData->ultimas_notas as $nota) { ?>
-                <div class="col-lg-4">
+                <div class="col-lg-4 d-flex flex-column align-items-center justify-content-between">
                     <img src="<?php foreach ($this->viewData->subjects as $subject) {
                                     if ($subject['IDSUBJECT'] == $nota['ID_SUBJECT']) {
                                         echo $subject['subject_image'];
                                     }
                                 } ?>" alt="" class="circle-img">
-                    <h2><?= $nota['note_title'] ?></h2>
-                    <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-                    <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+                    <h2><?= empty($nota['note_title']) ? 'A' : $nota['note_title'] ?></h2>
+
+                    <?php
+                    $temp_text = html_entity_decode(substr($nota['note'], 0, 300));
+                    if (substr($temp_text, -6) !== '</div>') {
+                        echo $temp_text . '</div>';
+                    } else {
+                        echo $temp_text;
+                    } ?>
+                    <p class="mt-4"><a class="btn btn-secondary" href="view_note?id=<?= $nota['IDNOTE'] ?>">Ver texto &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
             <?php } ?>
             <!-- <div class="col-lg-4">

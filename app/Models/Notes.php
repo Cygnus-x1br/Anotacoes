@@ -25,7 +25,7 @@ class Notes extends Model
 
     public function getAllNotes()
     {
-        $notes = "SELECT * FROM tb_notes";
+        $notes = "SELECT * FROM tb_notes ORDER BY IDNOTE DESC";
         $stmt = $this->db->prepare($notes);
         $stmt->execute();
 
@@ -81,7 +81,7 @@ class Notes extends Model
 
     public function getLastTexts()
     {
-        $notes = "SELECT * FROM tb_notes LIMIT 3";
+        $notes = "SELECT * FROM tb_notes ORDER BY IDNOTE DESC LIMIT 3";
         $stmt = $this->db->prepare($notes);
         $stmt->execute();
 
