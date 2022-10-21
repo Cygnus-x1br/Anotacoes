@@ -147,6 +147,37 @@ class Route extends \MF\Init\Bootstrap
             'action' => 'list_schools'
         );
 
+        $routes['add_curse'] = array(
+            'route' => '/add_curse',
+            'controller' => 'CurseController',
+            'action' => 'add_curse'
+        );
+        $routes['edit_curse'] = array(
+            'route' => '/edit_curse',
+            'controller' => 'CurseController',
+            'action' => 'edit_curse'
+        );
+        $routes['save_curse'] = array(
+            'route' => '/save_curse',
+            'controller' => 'CurseController',
+            'action' => 'save_curse'
+        );
+        $routes['change_curse'] = array(
+            'route' => '/change_curse',
+            'controller' => 'CurseController',
+            'action' => 'change_curse'
+        );
+        $routes['delete_curse'] = array(
+            'route' => '/delete_curse',
+            'controller' => 'CurseController',
+            'action' => 'delete_curse'
+        );
+        $routes['list_curses'] = array(
+            'route' => '/list_curses',
+            'controller' => 'CurseController',
+            'action' => 'list_curses'
+        );
+
 
         $this->setRoutes($routes);
     }

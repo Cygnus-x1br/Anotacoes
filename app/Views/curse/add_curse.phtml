@@ -1,0 +1,38 @@
+<div class="container mt-5">
+
+    <h1>Adiciona Curso</h1>
+    <div class="mb-3">
+
+        <form action="<?= isset($this->viewData->curse) ? 'change_curse' : 'save_curse' ?>" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="idcurse" value="<?= $this->viewData->curse['IDCURSE'] ?? '' ?>">
+
+            <label for="curse_title" class="form-label">Titulo do Curso</label>
+            <input type="text" class="form-control" name="curse_title" id="curse_title" value="<?= $this->viewData->curse['curse_title'] ?? '' ?>">
+
+            <label for="school" class="form-label me-2">Assunto</label>
+            <select class="form-select" name="id_school" id="school" aria-label="Default select example">
+                <?php foreach ($this->viewData->schools_list as $school) { ?>
+                    <option value="<?= $school['IDSCHOOL'] ?>" <?php if ($school['IDSCHOOL'] == $this->viewData->curse['ID_SCHOOL']) {
+                                                                    echo 'selected';
+                                                                } ?>><?= $school['school_name'] ?></option>
+                <?php } ?>
+            </select>
+            <label for="subject" class="form-label me-2">Assunto</label>
+            <select class="form-select mb-3" name="id_subject" id="subject" aria-label="Default select example">
+                <?php foreach ($this->viewData->listagem_assuntos as $assunto) { ?>
+                    <option value="<?= $assunto['IDSUBJECT'] ?>" <?php if ($assunto['IDSUBJECT'] == $this->viewData->curse['ID_SUBJECT']) {
+                                                                        echo 'selected';
+                                                                    } ?>><?= $assunto['subject'] ?></option>
+                <?php } ?>
+            </select>
+
+            <input id="x" value="<?= $this->viewData->curse['curse_description'] ?? '' ?>" type="hidden" name="curse_description">
+            <trix-editor input="x" style="min-height: 400px;"></trix-editor>
+
+            <div class="row">
+                <button type="submit" class="btn btn-secondary mt-4 me-2 col-2">Salvar</button>
+                <a href="list_curses" class="btn btn-danger mt-4  ms-2 col-2">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>

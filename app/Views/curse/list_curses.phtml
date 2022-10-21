@@ -1,0 +1,28 @@
+<div class="container mt-5">
+    <h1 class="text-center mb-3">Listagem de Cursos</h1>
+
+    <div class="row justify-content-end mb-5">
+        <div class="col-2 ">
+            <a href="add_curse" class="btn btn-success ">Adicionar Curso</a>
+        </div>
+    </div>
+    <hr>
+    <div class="listagem-sem-cabecalho row">
+        <?php foreach ($this->viewData->list_curses as $curse) { ?>
+            <ul class="justify-content-between ps-5 pe-5">
+                <div class="row flex-fill">
+                    <li class="col-8"><?= $curse['curse_title'] ?></li>
+                    <?php foreach ($this->viewData->schools_list as $school) {
+                        if ($curse['ID_SCHOOL'] == $school['IDSCHOOL']) { ?>
+                            <li class="col-3"> <?= $school['school_name'] ?></li>
+                    <?php }
+                    } ?>
+                </div>
+                <div class="d-flex flex-row">
+                    <li class="me-2"><a href="edit_curse?id=<?= $curse['IDCURSE'] ?>" class="btn btn-success">Edit</a></li>
+                    <li class="me-2"><a href="delete_curse?id=<?= $curse['IDCURSE'] ?>" class="btn btn-danger">Delete</a></li>
+                </div>
+            </ul>
+        <?php } ?>
+    </div>
+</div>
