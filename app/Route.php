@@ -208,6 +208,16 @@ class Route extends \MF\Init\Bootstrap
             'controller' => 'ClassController',
             'action' => 'list_classes'
         );
+        $routes['view_classes'] = array(
+            'route' => '/view_classes',
+            'controller' => 'ClassController',
+            'action' => 'view_classes'
+        );
+        $routes['view_class'] = array(
+            'route' => '/view_class',
+            'controller' => 'ClassController',
+            'action' => 'view_class'
+        );
 
 
         $this->setRoutes($routes);

@@ -1,0 +1,40 @@
+<div class="container mt-5">
+    <h1 class="text-center display-6"><?= $this->viewData->curse['curse_title'] ?></h1>
+    <div class="row justify-content-end mb-5 mt-5">
+        <div class="col-2 ">
+            <a href="add_class?id=<?= $this->viewData->curse['IDCURSE'] ?>" class="btn btn-success ">Adicionar Aula</a>
+        </div>
+        <div class="col-2">
+            <a href="list_classes?id=<?= $this->viewData->curse['IDCURSE'] ?>" class="btn btn-success ">Voltar</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <?php foreach ($this->viewData->list_classes as $class) { ?>
+            <div class="card mb-3">
+                <h5 class="card-header "><?php $class_number = $class['class_number'];
+                                            while (strlen($class_number) < 3) {
+                                                $class_number = '0' . $class_number;
+                                            }
+                                            echo 'Aula ' . $class_number; ?> - <?= $class['class_title'] ?></h5>
+                <img src="<?= $class['class_image_path'] ?>" class="card-img-top align-self-center" alt="..." style="width: 50%;" onmouseout="this.style.width='50%'" onmouseover="this.style.width='100%'">
+                <div class="card-body">
+                    <p class="card-text"><?= $class['class_notes'] ?></p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+                <div class="card-footer text-muted text-center">
+                    <div class="d-flex justify-content-between">
+                        <p>
+                            <?php foreach ($this->viewData->listagem_assuntos as $subject) {
+                                if ($subject['IDSUBJECT'] == $class['ID_SUBJECT']) {
+                                    echo $subject['subject'];
+                                }
+                            } ?>
+                        </p>
+                        <p><?= $class['include_date'] ?></p>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+</div>

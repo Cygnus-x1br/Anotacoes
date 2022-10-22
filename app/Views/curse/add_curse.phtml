@@ -9,7 +9,7 @@
             <label for="curse_title" class="form-label">Titulo do Curso</label>
             <input type="text" class="form-control" name="curse_title" id="curse_title" value="<?= $this->viewData->curse['curse_title'] ?? '' ?>">
 
-            <label for="school" class="form-label me-2">Assunto</label>
+            <label for="school" class="form-label me-2">Plataforma</label>
             <select class="form-select" name="id_school" id="school" aria-label="Default select example">
                 <?php foreach ($this->viewData->schools_list as $school) { ?>
                     <option value="<?= $school['IDSCHOOL'] ?>" <?php if ($school['IDSCHOOL'] == $this->viewData->curse['ID_SCHOOL']) {

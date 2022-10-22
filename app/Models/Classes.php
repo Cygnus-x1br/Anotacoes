@@ -13,9 +13,10 @@ class Classes extends Model
     private $see_again;
     private $id_curse;
     private $id_subject;
-    private $class_path;
-    private $class_image_path;
+    private $class_path = '';
+    private $class_image_path = '';
     private $id_user;
+    private $include_date;
 
     public function __get($atribute)
     {
@@ -47,7 +48,7 @@ class Classes extends Model
     }
     public function getClass()
     {
-        $class = "SELECT * FROM tb_classes WHERE IDCLASS=:idclass";
+        $class = "SELECT *, c.curse_title as curse, c.IDCURSE as idcurse FROM tb_classes INNER JOIN tb_curses as c ON IDCURSE = ID_CURSE WHERE IDCLASS=:idclass";
         $stmt = $this->db->prepare($class);
         $stmt->bindValue(':idclass', $this->__get('idclass'));
         $stmt->execute();
@@ -57,10 +58,10 @@ class Classes extends Model
 
     // Ajustar esses métodos
 
-    public function addCurse()
+    public function addClass()
     {
-        $curse = "INSERT INTO tb_classes(class_number, class_title, class_notes, see_again, ID_CURSE, ID_SUBJECT, class_path, class_image_path, ID_USER) VALUES(:class_number, :class_title, :class_notes, :see_again, :ID_CURSE, :ID_SUBJECT, :class_path, :class_image_path, :ID_USER)";
-        $stmt = $this->db->prepare($curse);
+        $class = "INSERT INTO tb_classes(class_number, class_title, class_notes, see_again, ID_CURSE, ID_SUBJECT, class_path, class_image_path, ID_USER, include_date) VALUES(:class_number, :class_title, :class_notes, :see_again, :ID_CURSE, :ID_SUBJECT, :class_path, :class_image_path, :ID_USER, NOW())";
+        $stmt = $this->db->prepare($class);
         $stmt->bindValue(':class_number', $this->__get('class_number'));
         $stmt->bindValue(':class_title', $this->__get('class_title'));
         $stmt->bindValue(':class_notes', $this->__get('class_notes'));
@@ -75,32 +76,28 @@ class Classes extends Model
         return $this;
     }
 
-    public function editCurse()
+    public function editClass()
     {
-        $curse = "UPDATE tb_curses SET curse_title=:curse_title, curse_description=:curse_description, id_school=:id_school WHERE IDCURSE = :idcurse";
-        $stmt = $this->db->prepare($curse);
-        $stmt->bindValue(':idcurse', $this->__get('idcurse'));
-        $stmt->bindValue(':curse_title', $this->__get('curse_title'));
-        $stmt->bindValue(':curse_description', $this->__get('curse_description'));
-        $stmt->bindValue(':id_school', $this->__get('id_school'));
-        $stmt->execute();
-        $curse_subject = "UPDATE tba_curse_subject SET id_subject=:id_subject WHERE ID_CURSE=:idcurse";
-        $stmt = $this->db->prepare($curse_subject);
-        $stmt->bindValue(':idcurse', $this->__get('idcurse'));
-        $stmt->bindValue('id_subject', $this->__get('id_subject'));
+        $class = "UPDATE tb_classes SET class_number=:class_number, class_title=:class_title, class_notes=:class_notes, see_again=:see_again, ID_SUBJECT=:id_subject, class_path=:class_path, class_image_path=:class_image_path, ID_USER=:id_user WHERE IDCLASS = :idclass";
+        $stmt = $this->db->prepare($class);
+        $stmt->bindValue(':class_number', $this->__get('class_number'));
+        $stmt->bindValue(':class_title', $this->__get('class_title'));
+        $stmt->bindValue(':class_notes', $this->__get('class_notes'));
+        $stmt->bindValue(':see_again', $this->__get('see_again'));
+        $stmt->bindValue(':idclass', $this->__get('idclass'));
+        $stmt->bindValue(':id_subject', $this->__get('id_subject'));
+        $stmt->bindValue(':class_path', $this->__get('class_path'));
+        $stmt->bindValue(':class_image_path', $this->__get('class_image_path'));
+        $stmt->bindValue(':id_user', $this->__get('id_user'));
         $stmt->execute();
 
         return $this;
     }
-    public function deleteCurse()
+    public function deleteClass()
     {
-        $curse_subject = "DELETE FROM tba_curse_subject WHERE ID_CURSE=:idcurse";
-        $stmt = $this->db->prepare($curse_subject);
-        $stmt->bindValue(':idcurse', $this->__get('idcurse'));
-        $stmt->execute();
-        $curse = "DELETE FROM tb_curses WHERE IDCURSE=:idcurse";
-        $stmt = $this->db->prepare($curse);
-        $stmt->bindValue(':idcurse', $this->__get('idcurse'));
+        $class = "DELETE FROM tb_classes WHERE IDCLASS=:idclass";
+        $stmt = $this->db->prepare($class);
+        $stmt->bindValue(':idclass', $this->__get('idclass'));
         $stmt->execute();
 
         return $this;

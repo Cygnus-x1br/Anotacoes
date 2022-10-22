@@ -17,8 +17,36 @@ class ClassController extends Action
         $this->viewData->list_classes = $list_classes;
         // $this->schools();
         $this->curse();
-
+        $this->subjects();
         $this->render('list_classes');
+    }
+
+    public function view_classes()
+    {
+        SigninController::validaAutenticacao();
+        $classes = Container::getModel('classes');
+        $classes->__set('id_curse', $_GET['id']);
+        $list_classes = $classes->getAllClassesFromCurse();
+
+        $this->viewData->list_classes = $list_classes;
+        // $this->schools();
+        $this->curse();
+        $this->subjects();
+        $this->render('view_classes');
+    }
+    public function view_class()
+    {
+        SigninController::validaAutenticacao();
+        $classes = Container::getModel('classes');
+        $classes->__set('idclass', $_GET['class']);
+
+        $list_class = $classes->getClass();
+
+        $this->viewData->list_class = $list_class;
+        // $this->schools();
+        $this->curse();
+        $this->subjects();
+        $this->render('view_class');
     }
 
     public function set_class($edit = '')
@@ -33,12 +61,10 @@ class ClassController extends Action
         } else if ($edit == 'edit' && ($_FILES['class_image_path']['size'] == 0)) {
             $class->__set('class_image_path', $_POST['class_image_path']);
         }
-
-
         $class->__set('class_number', $_POST['class_number']);
         $class->__set('class_title', $_POST['class_title']);
         $class->__set('class_notes', $_POST['class_notes']);
-        $class->__set('see_again', $_POST['see_again']);
+        $class->__set('see_again', (isset($_POST['see_again']) ?? 0));
         $class->__set('id_curse', $_POST['id_curse']);
         $class->__set('id_subject', $_POST['id_subject']);
         // $class->__set('class_image_path', $_POST['class_image_path']);
@@ -46,9 +72,9 @@ class ClassController extends Action
         $class->__set('id_user', $_SESSION['id']);
         if ($edit == 'edit') {
             $class->__set('idclass', $_POST['idclass']);
-            $class->editCurse();
+            $class->editClass();
         } else {
-            $class->addCurse();
+            $class->addClass();
         }
 
         header('Location: list_classes?id=' . $_POST['id_curse']);
@@ -62,9 +88,10 @@ class ClassController extends Action
         };
     }
 
-    public function change_curse()
+    public function change_class()
     {
-        if (!empty($_POST['curse_title'])) {
+        if (!empty($_POST['class_title'])) {
+            // print_r($_POST);
             $this->set_class('edit');
         };
     }
@@ -78,24 +105,26 @@ class ClassController extends Action
         $this->render('add_class', 'text_layout');
     }
 
-    public function edit_curse()
+    public function edit_class()
     {
-        $curse = Container::getModel('curses');
-        $curse->__set('idcurse', $_GET['id']);
-        $curse_edit = $curse->getCurse();
-        $this->viewData->curse = $curse_edit;
-
-        // $this->schools();
+        $this->curse();
+        $school_id = $this->viewData->curse['ID_SCHOOL'];
+        $this->school($school_id);
         $this->subjects();
-        $this->render('add_curse', 'text_layout');
+        $class = Container::getModel('classes');
+        $class->__set('idclass', $_GET['class']);
+        $class_edit = $class->getClass();
+        $this->viewData->class = $class_edit;
+        // $this->schools();
+        $this->render('add_class', 'text_layout');
     }
-    public function delete_curse()
+    public function delete_class()
     {
-        $curse = Container::getModel('curses');
-        $curse->__set('idcurse', $_GET['id']);
-        $curse->deleteCurse();
+        $class = Container::getModel('classes');
+        $class->__set('idclass', $_GET['class']);
+        $class->deleteClass();
 
-        header('Location: list_curses');
+        header('Location: list_classes?id=' . $_GET['id']);
     }
 
     private function subjects()
@@ -120,7 +149,7 @@ class ClassController extends Action
         return $this->viewData->curse;
     }
 
-    public function upload_file()
+    private function upload_file()
     {
         $file = $_FILES['class_image_path'];
         $ext = explode('.', $file['name']);

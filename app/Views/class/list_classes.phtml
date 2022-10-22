@@ -1,9 +1,12 @@
 <div class="container mt-5">
     <h1 class="text-center mb-3">Listagem de Aulas</h1>
-    <h2><?= $this->viewData->curse['curse_title'] ?></h2>
-    <div class="row justify-content-end mb-5">
+    <h2 class="text-center display-6"><?= $this->viewData->curse['curse_title'] ?></h2>
+    <div class="row justify-content-end mb-5 mt-5">
         <div class="col-2 ">
             <a href="add_class?id=<?= $this->viewData->curse['IDCURSE'] ?>" class="btn btn-success ">Adicionar Aula</a>
+        </div>
+        <div class="col-2">
+            <a href="view_classes?id=<?= $this->viewData->curse['IDCURSE'] ?>" class="btn btn-success ">Visão completa</a>
         </div>
     </div>
     <hr>
@@ -11,13 +14,22 @@
         <?php foreach ($this->viewData->list_classes as $class) { ?>
             <ul class="justify-content-between ps-5 pe-5">
                 <div class="row flex-fill">
-                    <li class="col-1"><?= $class['class_number'] ?></li>
-                    <li class="col-4"> <?= $class['class_title'] ?></li>
+                    <li class="col-2"><?php $class_number = $class['class_number'];
+                                        while (strlen($class_number) < 3) {
+                                            $class_number = '0' . $class_number;
+                                        }
+                                        echo 'Aula ' . $class_number; ?></li>
+                    <li class="col-8"> <?= $class['class_title'] ?></li>
+                    <li class="col-2"> <?php foreach ($this->viewData->listagem_assuntos as $subject) {
+                                            if ($subject['IDSUBJECT'] == $class['ID_SUBJECT']) {
+                                                echo $subject['subject'];
+                                            }
+                                        } ?></li>
                 </div>
                 <div class="d-flex flex-row">
-                    <li class="me-2"><a href="list_classes?id=<?= $curse['IDCURSE'] ?>" class="btn btn-success">Ver aulas</a></li>
-                    <li class="me-2"><a href="edit_curse?id=<?= $curse['IDCURSE'] ?>" class="btn btn-success">Edit</a></li>
-                    <li class="me-2"><a href="delete_curse?id=<?= $curse['IDCURSE'] ?>" class="btn btn-danger">Delete</a></li>
+                    <li class="me-2"><a href="view_class?id=<?= $this->viewData->curse['IDCURSE'] ?>&class=<?= $class['IDCLASS'] ?>" class="btn btn-success">Ver aula</a></li>
+                    <li class="me-2"><a href="edit_class?id=<?= $this->viewData->curse['IDCURSE'] ?>&class=<?= $class['IDCLASS'] ?>" class="btn btn-success">Edit</a></li>
+                    <li class="me-2"><a href="delete_class?id=<?= $this->viewData->curse['IDCURSE'] ?>&class=<?= $class['IDCLASS'] ?>" class="btn btn-danger">Delete</a></li>
                 </div>
             </ul>
         <?php } ?>
