@@ -1,0 +1,55 @@
+<div class="container mt-5">
+
+    <h1>Adiciona Aula</h1>
+    <div class="mb-3">
+
+        <h2>Plataforma: <?= $this->viewData->school['school_name'] ?></h2>
+        <h2>Curso: <?= $this->viewData->curse['curse_title'] ?></h2>
+        <form action="<?= isset($this->viewData->class) ? 'change_class' : 'save_class' ?>" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="idclass" value="<?= $this->viewData->class['IDCLASS'] ?? '' ?>">
+            <input type="hidden" name="id_curse" value="<?= $this->viewData->curse['IDCURSE'] ?>">
+
+            <label for="class_title" class="form-label">Título da Aula</label>
+            <input type="text" class="form-control" name="class_title" id="class_title" value="<?= $this->viewData->class['class_title'] ?? '' ?>">
+            <div class="row">
+                <div class="col-4">
+                    <label for="class_number" class="form-label">Aula número</label>
+                    <input type="text" class="form-control" name="class_number" id="class_number" value="<?= $this->viewData->class['class_number'] ?? '' ?>">
+                </div>
+                <div class="col-6">
+
+                    <label for="subject" class="form-label me-2">Assunto</label>
+                    <select class="form-select mb-3" name="id_subject" id="subject" aria-label="Default select example">
+                        <?php foreach ($this->viewData->listagem_assuntos as $assunto) { ?>
+                            <option value="<?= $assunto['IDSUBJECT'] ?>" <?php if ($assunto['IDSUBJECT'] == $this->viewData->curse['ID_SUBJECT']) {
+                                                                                echo 'selected';
+                                                                            } ?>><?= $assunto['subject'] ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="form-check form-switch col-2 align-text-bottom">
+                    <br>
+                    <input class="form-check-input" type="checkbox" role="switch" id="see_again" name="see_again" value="1">
+                    <label class="form-check-label" for="see_again">Ver novamente</label>
+                </div>
+            </div>
+            <input id="x" value="<?= $this->viewData->class['class_notes'] ?? '' ?>" type="hidden" name="class_notes">
+            <trix-editor input="x" style="min-height: 400px;"></trix-editor>
+            <label for="class_image_path" class="form-label">Imagem da aula</label>
+            <?php if (isset($this->viewData->class)) { ?>
+                <div class="alert alert-primary" role="alert">
+                    <input type="hidden" name="class_image_path" value="<?= $this->viewData->class['class_image_path'] ?>">
+                    <p>Last saved file: <span><?= $this->viewData->class['class_image_path'] ?? 'No file saved' ?></span></p>
+                <?php } ?>
+                </div>
+                <input type="file" class="form-control" id="class_image_path" aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="class_image_path" accept="image/jpeg,.gif,.png">
+                <label for="class_path" class="form-label">Path para os arquivos da aula</label>
+                <input type="text" class="form-control" name="class_path" id="class_path" value="<?= $this->viewData->class['class_path'] ?? '' ?>">
+
+                <div class="row">
+                    <button type="submit" class="btn btn-secondary mt-4 me-2 col-2">Salvar</button>
+                    <a href="list_curses" class="btn btn-danger mt-4  ms-2 col-2">Voltar</a>
+                </div>
+        </form>
+    </div>
+</div>

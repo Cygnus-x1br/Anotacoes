@@ -35,6 +35,16 @@ class Classes extends Model
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+    public function getAllClassesFromCurse()
+    {
+        $classes = "SELECT *, c.curse_title as curse, c.IDCURSE as idcurse FROM tb_classes INNER JOIN tb_curses as c ON IDCURSE = ID_CURSE WHERE ID_CURSE=:id_curse ORDER BY class_number ASC";
+        $stmt = $this->db->prepare($classes);
+        $stmt->bindValue(':id_curse', $this->__get('id_curse'));
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
     public function getClass()
     {
         $class = "SELECT * FROM tb_classes WHERE IDCLASS=:idclass";
@@ -55,11 +65,11 @@ class Classes extends Model
         $stmt->bindValue(':class_title', $this->__get('class_title'));
         $stmt->bindValue(':class_notes', $this->__get('class_notes'));
         $stmt->bindValue(':see_again', $this->__get('see_again'));
-        $stmt->bindValue(':ID_CURSE', $this->__get('ID_CURSE'));
-        $stmt->bindValue(':ID_SUBJECT', $this->__get('ID_SUBJECT'));
+        $stmt->bindValue(':ID_CURSE', $this->__get('id_curse'));
+        $stmt->bindValue(':ID_SUBJECT', $this->__get('id_subject'));
         $stmt->bindValue(':class_path', $this->__get('class_path'));
         $stmt->bindValue(':class_image_path', $this->__get('class_image_path'));
-        $stmt->bindValue(':ID_USER', $this->__get('ID_USER'));
+        $stmt->bindValue(':ID_USER', $this->__get('id_user'));
         $stmt->execute();
 
         return $this;

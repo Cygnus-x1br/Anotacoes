@@ -178,6 +178,37 @@ class Route extends \MF\Init\Bootstrap
             'action' => 'list_curses'
         );
 
+        $routes['add_class'] = array(
+            'route' => '/add_class',
+            'controller' => 'ClassController',
+            'action' => 'add_class'
+        );
+        $routes['edit_class'] = array(
+            'route' => '/edit_class',
+            'controller' => 'ClassController',
+            'action' => 'edit_class'
+        );
+        $routes['save_class'] = array(
+            'route' => '/save_class',
+            'controller' => 'ClassController',
+            'action' => 'save_class'
+        );
+        $routes['change_class'] = array(
+            'route' => '/change_class',
+            'controller' => 'ClassController',
+            'action' => 'change_class'
+        );
+        $routes['delete_class'] = array(
+            'route' => '/delete_class',
+            'controller' => 'ClassController',
+            'action' => 'delete_class'
+        );
+        $routes['list_classes'] = array(
+            'route' => '/list_classes',
+            'controller' => 'ClassController',
+            'action' => 'list_classes'
+        );
+
 
         $this->setRoutes($routes);
     }
