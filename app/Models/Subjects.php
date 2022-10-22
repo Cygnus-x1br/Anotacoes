@@ -23,7 +23,7 @@ class Subjects extends Model
 
     public function getAllSubjects()
     {
-        $subjects = "SELECT * FROM tb_subject";
+        $subjects = "SELECT * FROM tb_subject ORDER BY subject ASC";
         $stmt = $this->db->prepare($subjects);
         $stmt->execute();
 
