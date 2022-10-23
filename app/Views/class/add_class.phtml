@@ -33,7 +33,7 @@
                     <label class="form-check-label" for="see_again">Ver novamente</label>
                 </div>
             </div>
-            <input id="x" value="<?= $this->viewData->class['class_notes'] ?? '' ?>" type="hidden" name="class_notes">
+            <input id="x" value="<?php echo htmlentities($this->viewData->class['class_notes']) ?? '' ?>" type="hidden" name="class_notes">
             <trix-editor input="x" style="min-height: 400px;"></trix-editor>
             <label for="class_image_path" class="form-label">Imagem da aula</label>
             <?php if (isset($this->viewData->class)) { ?>
@@ -48,7 +48,7 @@
 
                 <div class="row">
                     <button type="submit" class="btn btn-secondary mt-4 me-2 col-2">Salvar</button>
-                    <a href="list_curses" class="btn btn-danger mt-4  ms-2 col-2">Voltar</a>
+                    <a href="list_classes?id=<?= $this->viewData->curse['IDCURSE'] ?>" class="btn btn-danger mt-4  ms-2 col-2">Voltar</a>
                 </div>
         </form>
     </div>

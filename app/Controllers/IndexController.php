@@ -16,10 +16,14 @@ class IndexController extends Action
         $last_texts = Container::getModel('notes');
         $show_last = $last_texts->getLastTexts();
         $this->viewData->ultimas_notas = $show_last;
+
         $subject = Container::getModel('subjects');
         $subjects = $subject->getAllSubjects();
         $this->viewData->subjects = $subjects;
 
+        $classes = Container::getModel('classes');
+        $lastClasses = $classes->getLastClasses();
+        $this->viewData->classes = $lastClasses;
 
         $this->render('index');
     }

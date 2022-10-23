@@ -46,6 +46,15 @@ class Classes extends Model
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+    public function getLastClasses()
+    {
+        $classes = "SELECT *, c.curse_title as curse, c.IDCURSE as idcurse FROM tb_classes INNER JOIN tb_curses as c ON IDCURSE = ID_CURSE ORDER BY IDCLASS DESC LIMIT 3";
+        $stmt = $this->db->prepare($classes);
+        // $stmt->bindValue(':id_curse', $this->__get('id_curse'));
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
     public function getClass()
     {
         $class = "SELECT *, c.curse_title as curse, c.IDCURSE as idcurse FROM tb_classes INNER JOIN tb_curses as c ON IDCURSE = ID_CURSE WHERE IDCLASS=:idclass";
