@@ -11,13 +11,21 @@
 
             <label for="class_title" class="form-label">Título da Aula</label>
             <input type="text" class="form-control" name="class_title" id="class_title" value="<?= $this->viewData->class['class_title'] ?? '' ?>">
+            <label for="subtitle" class="form-label me-2">Subtitulo</label>
+            <select class="form-select mb-3" name="id_subtitle" id="subtitle" aria-label="Default select example">
+                <option value=""></option>
+                <?php foreach ($this->viewData->subtitles as $subtitle) { ?>
+                    <option value="<?= $subtitle['IDSUBTITLE'] ?>" <?php if ($subtitle['IDSUBTITLE'] == $this->viewData->class['ID_SUBTITLE']) {
+                                                                        echo 'selected';
+                                                                    } ?>><?= $subtitle['subtitle_number'] ?> - <?= $subtitle['subtitle'] ?></option>
+                <?php } ?>
+            </select>
             <div class="row">
                 <div class="col-4">
                     <label for="class_number" class="form-label">Aula número</label>
                     <input type="text" class="form-control" name="class_number" id="class_number" value="<?= $this->viewData->class['class_number'] ?? '' ?>">
                 </div>
                 <div class="col-6">
-
                     <label for="subject" class="form-label me-2">Assunto</label>
                     <select class="form-select mb-3" name="id_subject" id="subject" aria-label="Default select example">
                         <?php foreach ($this->viewData->listagem_assuntos as $assunto) { ?>

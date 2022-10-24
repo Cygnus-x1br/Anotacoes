@@ -1,0 +1,42 @@
+<div class="container mt-5">
+
+    <h1>Adiciona Subtítulo</h1>
+    <h2><?= $this->viewData->curse['curse_title'] ?></h2>
+    <div class="mb-3">
+
+
+        <form action="<?= isset($this->viewData->subtitle) ? 'change_subtitle' : 'save_subtitle' ?>" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="idsubtitle" value="<?= $this->viewData->subtitle['IDSUBTITLE'] ?? '' ?>">
+            <input type="hidden" name="id_curse" value="<?= $this->viewData->curse['IDCURSE'] ?? '' ?>">
+
+            <div class="row">
+                <div class="col-4">
+                    <label for="subtitle_number" class="form-label">Número Subtítulo</label>
+                    <input type="text" class="form-control" name="subtitle_number" id="subtitle_number" value="<?= $this->viewData->subtitle['subtitle_number'] ?? '' ?>">
+                </div>
+                <div class="col-8">
+                    <label for="subtitle" class="form-label">Subtítulo</label>
+                    <input type="text" class="form-control" name="subtitle" id="subtitle" value="<?= $this->viewData->subtitle['subtitle'] ?? '' ?>">
+                </div>
+            </div>
+
+
+            <label for="subject" class="form-label me-2">Assunto</label>
+            <select class="form-select mb-3" name="id_subject" id="subject" aria-label="Default select example">
+                <?php foreach ($this->viewData->listagem_assuntos as $assunto) { ?>
+                    <option value="<?= $assunto['IDSUBJECT'] ?>" <?php if ($assunto['IDSUBJECT'] == $this->viewData->subtitle['ID_SUBJECT']) {
+                                                                        echo 'selected';
+                                                                    } ?>><?= $assunto['subject'] ?></option>
+                <?php } ?>
+            </select>
+
+            <input id="x" value="<?= $this->viewData->subtitle['subtitle_description'] ?? '' ?>" type="hidden" name="subtitle_description">
+            <trix-editor input="x" style="min-height: 400px;"></trix-editor>
+
+            <div class="row">
+                <button type="submit" class="btn btn-secondary mt-4 me-2 col-2">Salvar</button>
+                <a href="list_subtitles?id=<?= $this->viewData->curse['IDCURSE'] ?>" class="btn btn-danger mt-4  ms-2 col-2">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>

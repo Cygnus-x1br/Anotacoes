@@ -17,6 +17,7 @@ class Classes extends Model
     private $class_image_path = '';
     private $id_user;
     private $include_date;
+    private $id_subtitle;
 
     public function __get($atribute)
     {
@@ -38,7 +39,7 @@ class Classes extends Model
     }
     public function getAllClassesFromCurse()
     {
-        $classes = "SELECT *, c.curse_title as curse, c.IDCURSE as idcurse FROM tb_classes INNER JOIN tb_curses as c ON IDCURSE = ID_CURSE WHERE ID_CURSE=:id_curse ORDER BY class_number ASC";
+        $classes = "SELECT *, c.curse_title as curse, c.IDCURSE as idcurse, s.subtitle as subtitle, s.subtitle_number as subtitle_number FROM tb_classes as cl INNER JOIN tb_curses as c ON c.IDCURSE = cl.ID_CURSE LEFT JOIN tb_curse_subtitle as s ON cl.ID_SUBTITLE = s.IDSUBTITLE WHERE cl.ID_CURSE=:id_curse ORDER BY subtitle_number ASC, class_number ASC";
         $stmt = $this->db->prepare($classes);
         $stmt->bindValue(':id_curse', $this->__get('id_curse'));
 
@@ -69,7 +70,7 @@ class Classes extends Model
 
     public function addClass()
     {
-        $class = "INSERT INTO tb_classes(class_number, class_title, class_notes, see_again, ID_CURSE, ID_SUBJECT, class_path, class_image_path, ID_USER, include_date) VALUES(:class_number, :class_title, :class_notes, :see_again, :ID_CURSE, :ID_SUBJECT, :class_path, :class_image_path, :ID_USER, NOW())";
+        $class = "INSERT INTO tb_classes(class_number, class_title, class_notes, see_again, ID_CURSE, ID_SUBJECT, class_path, class_image_path, ID_USER, include_date, ID_SUBTITLE) VALUES(:class_number, :class_title, :class_notes, :see_again, :ID_CURSE, :ID_SUBJECT, :class_path, :class_image_path, :ID_USER, NOW(), :id_subtitle)";
         $stmt = $this->db->prepare($class);
         $stmt->bindValue(':class_number', $this->__get('class_number'));
         $stmt->bindValue(':class_title', $this->__get('class_title'));
@@ -80,6 +81,7 @@ class Classes extends Model
         $stmt->bindValue(':class_path', $this->__get('class_path'));
         $stmt->bindValue(':class_image_path', $this->__get('class_image_path'));
         $stmt->bindValue(':ID_USER', $this->__get('id_user'));
+        $stmt->bindValue(':id_subtitle', $this->__get('id_subtitle'));
         $stmt->execute();
 
         return $this;
@@ -87,7 +89,7 @@ class Classes extends Model
 
     public function editClass()
     {
-        $class = "UPDATE tb_classes SET class_number=:class_number, class_title=:class_title, class_notes=:class_notes, see_again=:see_again, ID_SUBJECT=:id_subject, class_path=:class_path, class_image_path=:class_image_path, ID_USER=:id_user WHERE IDCLASS = :idclass";
+        $class = "UPDATE tb_classes SET class_number=:class_number, class_title=:class_title, class_notes=:class_notes, see_again=:see_again, ID_SUBJECT=:id_subject, class_path=:class_path, class_image_path=:class_image_path, ID_USER=:id_user, ID_SUBTITLE=:id_subtitle WHERE IDCLASS = :idclass";
         $stmt = $this->db->prepare($class);
         $stmt->bindValue(':class_number', $this->__get('class_number'));
         $stmt->bindValue(':class_title', $this->__get('class_title'));
@@ -98,6 +100,8 @@ class Classes extends Model
         $stmt->bindValue(':class_path', $this->__get('class_path'));
         $stmt->bindValue(':class_image_path', $this->__get('class_image_path'));
         $stmt->bindValue(':id_user', $this->__get('id_user'));
+        $stmt->bindValue(':id_subtitle', $this->__get('id_subtitle'));
+
         $stmt->execute();
 
         return $this;

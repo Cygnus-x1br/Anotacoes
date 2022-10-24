@@ -178,6 +178,37 @@ class Route extends \MF\Init\Bootstrap
             'action' => 'list_curses'
         );
 
+        $routes['add_subtitle'] = array(
+            'route' => '/add_subtitle',
+            'controller' => 'SubtitleController',
+            'action' => 'add_subtitle'
+        );
+        $routes['edit_subtitle'] = array(
+            'route' => '/edit_subtitle',
+            'controller' => 'SubtitleController',
+            'action' => 'edit_subtitle'
+        );
+        $routes['save_subtitle'] = array(
+            'route' => '/save_subtitle',
+            'controller' => 'SubtitleController',
+            'action' => 'save_subtitle'
+        );
+        $routes['change_subtitle'] = array(
+            'route' => '/change_subtitle',
+            'controller' => 'SubtitleController',
+            'action' => 'change_subtitle'
+        );
+        $routes['delete_subtitle'] = array(
+            'route' => '/delete_subtitle',
+            'controller' => 'SubtitleController',
+            'action' => 'delete_subtitle'
+        );
+        $routes['list_subtitles'] = array(
+            'route' => '/list_subtitles',
+            'controller' => 'SubtitleController',
+            'action' => 'list_subtitles'
+        );
+
         $routes['add_class'] = array(
             'route' => '/add_class',
             'controller' => 'ClassController',
