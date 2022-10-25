@@ -20,7 +20,7 @@
                 <img src="<?= $class['class_image_path'] ?>" class="card-img-top align-self-center" alt="..." style="width: 50%;" onmouseout="this.style.width='50%'" onmouseover="this.style.width='100%'">
                 <div class="card-body">
                     <p class="card-text"><?= $class['class_notes'] ?></p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="view_class?id=<?= $this->viewData->curse['IDCURSE'] ?>&class=<?= $class['IDCLASS'] ?>" class="btn btn-primary">Ver aula</a>
                 </div>
                 <div class="card-footer text-muted text-center">
                     <div class="d-flex justify-content-between">
