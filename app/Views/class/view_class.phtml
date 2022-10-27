@@ -15,7 +15,9 @@
                                             $class_number = '0' . $class_number;
                                         }
                                         echo 'Aula ' . $class_number; ?> - <?= $this->viewData->list_class['class_title'] ?></h5>
-            <img src="<?= $this->viewData->list_class['class_image_path'] ?>" class="card-img-top align-self-center" alt="...">
+            <?php if (!empty($class['class_image_path'])) { ?>
+                <img src="<?= $this->viewData->list_class['class_image_path'] ?>" class="card-img-top align-self-center" alt="...">
+            <?php } ?>
             <div class="card-body">
                 <p class="card-text"><?= $this->viewData->list_class['class_notes'] ?></p>
                 <a href="<?= $this->viewData->list_class['class_path'] ?>" class="btn btn-primary">Ver projeto</a>
