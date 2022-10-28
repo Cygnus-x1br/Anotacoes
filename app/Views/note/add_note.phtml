@@ -42,7 +42,7 @@
             <input type="text" class="form-control" name="note_title" id="title" value="<?= $this->viewData->note['note_title'] ?? '' ?>" placeholder="Escreva um título para a nota">
         </div>
 
-        <input id="x" value="<?= $this->viewData->note['note'] ?? '' ?>" type="hidden" name="note">
+        <input id="x" value="<?= htmlentities($this->viewData->note['note']) ?? '' ?>" type="hidden" name="note">
         <trix-editor input="x" style="min-height: 400px;"></trix-editor>
         <button type="submit" class="btn btn-success mt-4">Gravar texto</button>
         <a href="list_notes" class="btn btn-danger mt-4  ms-2 col-2">Voltar</a>
