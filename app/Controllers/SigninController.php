@@ -27,7 +27,7 @@ class SigninController extends Action
         $user->login();
 
         if ($user->__get('iduser') && $user->__get('username')) {
-            echo 'started';
+            
             session_start();
             $_SESSION['id'] = $user->__get('iduser');
             $_SESSION['nome'] = $user->__get('user_name');
