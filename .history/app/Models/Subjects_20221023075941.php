@@ -41,8 +41,7 @@ class Subjects extends Model
 
     public function addSubject()
     {
-        $subject = "INSERT INTO tb_subject(subject, subject_image, subject_link)
-         VALUES(:subject, :subject_image, :subject_link)";
+        $subject = "INSERT INTO tb_subject(subject, subject_image, subject_link) VALUES(:subject, :subject_image, :subject_link)";
         $stmt = $this->db->prepare($subject);
         $stmt->bindValue(':subject', $this->__get('subject'));
         $stmt->bindValue(':subject_image', $this->__get('subject_image'));
@@ -53,9 +52,7 @@ class Subjects extends Model
     }
     public function editSubject()
     {
-        $subject = "UPDATE tb_subject
-         SET subject=:subject, subject_image=:subject_image, subject_link=:subject_link
-          WHERE IDSUBJECT=:idsubject";
+        $subject = "UPDATE tb_subject SET subject=:subject, subject_image=:subject_image, subject_link=:subject_link WHERE IDSUBJECT=:idsubject";
         $stmt = $this->db->prepare($subject);
         $stmt->bindValue(':idsubject', $this->__get('idsubject'));
         $stmt->bindValue(':subject', $this->__get('subject'));

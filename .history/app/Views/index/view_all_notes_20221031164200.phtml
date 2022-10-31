@@ -1,0 +1,43 @@
+<h2 class="mt-5 text-center">Todas as Anotações</h2>
+<hr>
+<main class="container mt-5">
+    <?php foreach ($this->viewData->notes as $note) { ?>
+        <div class="d-flex flex-row justify-content-between align-items-center" style="height: 320px;">
+            <input type="hidden" name="idnote" value="<?= $note['IDNOTE'] ?>">
+            <img src="<?php foreach ($this->viewData->subjects as $subject) {
+                            if ($subject['IDSUBJECT'] == $note['ID_SUBJECT']) {
+                                echo $subject['subject_image'];
+                            }
+                        } ?>" alt="" class="circle-img">
+            <div class="d-flex flex-column" style="min-width: 70%">
+                <div class="d-flex justify-content-between flex-row">
+                    <h2><?= empty($note['note_title']) ? '' : $note['note_title'] ?></h2>
+                    <div class="d-flex justify-content-between flex-row align-items-center">
+                        <div><?= $note['note_date'] ?></div>
+                        <a href="view_note?id=<?= $note['IDNOTE'] ?>&page=viewAll" class="btn btn-secondary ms-2">
+                            Ver anotação
+                        </a>
+                        <a href="/" class="btn btn-danger ms-2">Voltar</a>
+                    </div>
+                </div>
+                <hr>
+                <div>
+                    <?php
+                    // if (strlen(htmlentities($note['note'])) > 100) {
+                    $string_text = substr(htmlentities($note['note']), 0, 100);
+                    echo $string_text;
+                    preg_match("/<\/[a-z]*>/i", $string_text, $teste);
+                    print_r($teste);
+                    // $temp_text = (substr($string_text, 0, (strpos($string_text, preg_match('/<\/[a-z]*>/', $string_text), 100))));
+                    // echo $temp_text;
+                    // } else {
+                    //     echo html_entity_decode($note['note']);
+                    // }
+
+                    ?>
+                </div>
+            </div>
+        </div>
+        <hr class="featurette-divider">
+    <?php } ?>
+</main>

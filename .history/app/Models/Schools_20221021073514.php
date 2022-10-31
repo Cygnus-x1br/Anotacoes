@@ -40,8 +40,7 @@ class Schools extends Model
     }
     public function addSchool()
     {
-        $school = "INSERT INTO tb_schools(school_name, school_link, school_logo)
-         VALUES(:school_name, :school_link, :school_logo)";
+        $school = "INSERT INTO tb_schools(school_name, school_link, school_logo) VALUES(:school_name, :school_link, :school_logo)";
         $stmt = $this->db->prepare($school);
         $stmt->bindValue(':school_name', $this->__get('school_name'));
         $stmt->bindValue(':school_link', $this->__get('school_link'));
@@ -52,9 +51,7 @@ class Schools extends Model
     }
     public function editSchool()
     {
-        $school = "UPDATE tb_schools
-         SET school_name=:school_name, school_link=:school_link, school_logo=:school_logo
-          WHERE IDSCHOOL = :idschool";
+        $school = "UPDATE tb_schools SET school_name=:school_name, school_link=:school_link, school_logo=:school_logo WHERE IDSCHOOL = :idschool";
         $stmt = $this->db->prepare($school);
         $stmt->bindValue(':idschool', $this->__get('idschool'));
         $stmt->bindValue(':school_name', $this->__get('school_name'));

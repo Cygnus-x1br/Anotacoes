@@ -43,11 +43,7 @@ class Subtitles extends Model
     }
     public function addSubtitle()
     {
-        $subtitle = "INSERT INTO tb_curse_subtitle(subtitle_number,
-         subtitle,
-          subtitle_description,
-           ID_CURSE,
-            ID_SUBJECT)
+        $subtitle = "INSERT INTO tb_curse_subtitle(subtitle_number, subtitle, subtitle_description, ID_CURSE, ID_SUBJECT)
          VALUES(:subtitle_number, :subtitle, :subtitle_description, :id_curse, :id_subject)";
         $stmt = $this->db->prepare($subtitle);
         $stmt->bindValue(':subtitle_number', $this->__get('subtitle_number'));
@@ -61,12 +57,7 @@ class Subtitles extends Model
     }
     public function editSubtitle()
     {
-        $subtitle = "UPDATE tb_curse_subtitle
-         SET subtitle_number=:subtitle_number,
-          subtitle=:subtitle,
-           subtitle_description=:subtitle_description,
-            id_subject=:id_subject
-             WHERE IDSUBTITLE = :idsubtitle";
+        $subtitle = "UPDATE tb_curse_subtitle SET subtitle_number=:subtitle_number, subtitle=:subtitle, subtitle_description=:subtitle_description, id_subject=:id_subject WHERE IDSUBTITLE = :idsubtitle";
         $stmt = $this->db->prepare($subtitle);
         $stmt->bindValue(':idsubtitle', $this->__get('idsubtitle'));
         $stmt->bindValue(':subtitle_number', $this->__get('subtitle_number'));

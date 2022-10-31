@@ -8,14 +8,7 @@
     <title>Notes App</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link href="../css/carousel.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/lista.css">
-    <style>
-        .circle-img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/trix.css">
 </head>
 
 <body>
@@ -29,7 +22,7 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="view_all_notes">Lista de Notas</a>
+                            <a class="nav-link active" aria-current="page" href="view_all_notes">Lista de Assuntos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="list_curses">Lista de Cursos</a>
@@ -42,7 +35,7 @@
                         </li>
                         <li class="nav-item">
                             <div class="dropdown">
-                                <button class="btn btn-outline-secondary dropdown-toggle <?= $this->setHtmlData->signed ?>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-outline-secondary dropdown-toggle  <?= $this->setHtmlData->signed ?>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Adicionar Anotações
                                 </button>
                                 <ul class="dropdown-menu">
@@ -69,6 +62,7 @@
 
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/trix.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,50 @@
+<div class="container mt-5">
+    <h1 class="text-center mb-3">Add Note</h1>
+
+    <form action="<?= isset($this->viewData->note) ? 'change_note' : 'save_note' ?>" method="POST">
+        <div class="d-flex flex-row justify-content-between align-items-center mb-4">
+            <div class="container">
+                <input type="hidden" name="idnote" value="<?= $this->viewData->note['IDNOTE'] ?? '' ?>">
+
+                <label for="subject" class="form-label me-2">Assunto</label>
+                <select class="form-select" name="id_subject" id="subject" aria-label="Default select example">
+                    <?php foreach ($this->viewData->listagem_assuntos as $assunto) { ?>
+                        <option value="<?= $assunto['IDSUBJECT'] ?>" <?php if ($assunto['IDSUBJECT'] == $this->viewData->note['ID_SUBJECT']) {
+                                                                            echo 'selected';
+                                                                        } ?>><?= $assunto['subject'] ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="container">
+
+                <label for="subject" class="form-label me-2">Tipo de texto</label>
+                <select class="form-select" name="type_of_note" id="subject" aria-label="Default select example">
+                    <option value="I" <?php if ($this->viewData->note['type_of_note'] == 'I') {
+                                            echo 'selected';
+                                        } ?>>Instalação</option>
+                    <option value="F" <?php if ($this->viewData->note['type_of_note'] == 'F') {
+                                            echo 'selected';
+                                        } ?>>Configuração</option>
+                    <option value="C" <?php if ($this->viewData->note['type_of_note'] == 'C') {
+                                            echo 'selected';
+                                        } ?>>Comandos</option>
+                    <option value="T" <?php if ($this->viewData->note['type_of_note'] == 'T') {
+                                            echo 'selected';
+                                        } ?>>Informações</option>
+                    <option value="B" <?php if ($this->viewData->note['type_of_note'] == 'B') {
+                                            echo 'selected';
+                                        } ?>>Bloco de código</option>
+                </select>
+            </div>
+        </div>
+        <div class="mb-4">
+            <label for="title" class="form-label">Título</label>
+            <input type="text" class="form-control" name="note_title" id="title" value="<?= $this->viewData->note['note_title'] ?? '' ?>" placeholder="Escreva um título para a nota">
+        </div>
+
+        <input id="x" value="<?= htmlentities($this->viewData->note['note']) ?? '' ?>" type="hidden" name="note">
+        <trix-editor input="x" style="min-height: 400px;"></trix-editor>
+        <button type="submit" class="btn btn-success mt-4">Gravar texto</button>
+        <a href="list_notes" class="btn btn-danger mt-4  ms-2 col-2">Voltar</a>
+    </form>
+</div>
