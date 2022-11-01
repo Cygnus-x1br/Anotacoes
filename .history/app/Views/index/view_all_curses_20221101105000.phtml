@@ -1,0 +1,33 @@
+<h2 class="mt-5 text-center">Todas as Anotações</h2>
+<hr>
+<main class="container mt-5">
+    <?php foreach ($this->viewData->curses as $curse) { ?>
+        <div class="d-flex flex-row justify-content-between align-items-center" style="height: 320px;">
+            <input type="hidden" name="idcurse" value="<?= $curse['IDCURSE'] ?>">
+            <img src="<?php foreach ($this->viewData->schools as $school) {
+                            if ($school['IDSCHOOL'] == $curse['ID_SCHOOL']) {
+                                echo $school['school_logo'];
+                            }
+                        } ?>" alt="" class="circle-img">
+            <div class="d-flex flex-column ms-3" style="min-width: 70%">
+                <div class="d-flex justify-content-between flex-row">
+                    <h2><?= empty($curse['']) ? '' : $curse[''] ?></h2>
+                    <div class="d-flex justify-content-between flex-row align-items-center">
+                        <div><?= $curse['curse_description'] ?></div>
+                        <a href="view_note?id=<?= $note['IDNOTE'] ?>&page=viewAll" class="btn btn-secondary ms-2">
+                            Ver anotação
+                        </a>
+                        <a href="/" class="btn btn-danger ms-2">Voltar</a>
+                    </div>
+                </div>
+                <hr>
+                <div>
+                    <?php
+                    echo $curse['curse_description'];
+                    ?>
+                </div>
+            </div>
+        </div>
+        <hr class="featurette-divider">
+    <?php } ?>
+</main>

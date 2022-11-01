@@ -57,18 +57,4 @@ class IndexController extends Action
 
         $this->render('view_all_notes');
     }
-    public function view_all_curses()
-    {
-        $viewCurses = Container::getModel('curses');
-        $showCurses = $viewCurses->getAllCurses();
-        $this->viewData->curses = $showCurses;
-        $school = Container::getModel('schools');
-        $schools = $school->getAllSchools();
-        $this->viewData->schools = $schools;
-        $subject = Container::getModel('subjects');
-        $subjects = $subject->getAllSubjects();
-        $this->viewData->subjects = $subjects;
-
-        $this->render('view_all_curses');
-    }
 }

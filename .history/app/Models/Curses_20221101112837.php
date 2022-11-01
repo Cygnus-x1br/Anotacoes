@@ -25,7 +25,7 @@ class Curses extends Model
 
     public function getAllCurses()
     {
-        $curses = "SELECT *, s.ID_SUBJECT as subject FROM tb_curses
+        $curses = "SELECT *, s.ID_SUBJECT FROM tb_curses
          INNER JOIN tba_curse_subject as s ON ID_CURSE=IDCURSE
           ORDER BY curse_title ASC";
         $stmt = $this->db->prepare($curses);

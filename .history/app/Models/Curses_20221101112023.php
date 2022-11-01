@@ -25,9 +25,7 @@ class Curses extends Model
 
     public function getAllCurses()
     {
-        $curses = "SELECT *, s.ID_SUBJECT as subject FROM tb_curses
-         INNER JOIN tba_curse_subject as s ON ID_CURSE=IDCURSE
-          ORDER BY curse_title ASC";
+        $curses = "SELECT * FROM tb_curses ORDER BY curse_title ASC";
         $stmt = $this->db->prepare($curses);
         $stmt->execute();
 
@@ -102,11 +100,5 @@ class Curses extends Model
 
     public function curseSubject()
     {
-        $curseSubject = "SELECT * FROM tba_curse_subject WHERE ID_CURSE=:idcurse";
-        $stmt = $this->db->prepare($curseSubject);
-        $stmt->bindValue(':idcurse', $this->__get['idcurse']);
-        $stmt->execute();
-
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 }

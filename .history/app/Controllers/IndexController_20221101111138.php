@@ -65,9 +65,6 @@ class IndexController extends Action
         $school = Container::getModel('schools');
         $schools = $school->getAllSchools();
         $this->viewData->schools = $schools;
-        $subject = Container::getModel('subjects');
-        $subjects = $subject->getAllSubjects();
-        $this->viewData->subjects = $subjects;
 
         $this->render('view_all_curses');
     }

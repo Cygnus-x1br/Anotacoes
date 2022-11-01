@@ -62,12 +62,12 @@ class IndexController extends Action
         $viewCurses = Container::getModel('curses');
         $showCurses = $viewCurses->getAllCurses();
         $this->viewData->curses = $showCurses;
-        $school = Container::getModel('schools');
-        $schools = $school->getAllSchools();
-        $this->viewData->schools = $schools;
         $subject = Container::getModel('subjects');
         $subjects = $subject->getAllSubjects();
         $this->viewData->subjects = $subjects;
+        $school = Container::getModel('schools');
+        $schools = $school->getAllSchools();
+        $this->viewData->schools = $schools;
 
         $this->render('view_all_curses');
     }
