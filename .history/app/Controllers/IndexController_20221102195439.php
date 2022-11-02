@@ -67,10 +67,7 @@ class IndexController extends Action
     }
     public function view_all_curses()
     {
-        session_start();
-        if (!$_SESSION['id']) {
-            $this->setHtmlData->signed = 'disabled';
-        }
+        SigninController::validaAutenticacao();
         $viewCurses = Container::getModel('curses');
         $showCurses = $viewCurses->getAllCurses();
         $this->viewData->curses = $showCurses;

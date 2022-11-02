@@ -30,10 +30,6 @@ class IndexController extends Action
 
     public function view_note()
     {
-        session_start();
-        if (!$_SESSION['id']) {
-            $this->setHtmlData->signed = 'disabled';
-        }
         if (isset($_GET['page']) && $_GET['page'] == 'viewAll') {
             $this->setHtmlData->return = 'view_all_notes';
         } else {
@@ -52,10 +48,6 @@ class IndexController extends Action
 
     public function view_all_notes()
     {
-        session_start();
-        if (!$_SESSION['id']) {
-            $this->setHtmlData->signed = 'disabled';
-        }
         $view_notes = Container::getModel('notes');
         $show_notes = $view_notes->getAllNotes();
         $this->viewData->notes = $show_notes;
@@ -67,10 +59,7 @@ class IndexController extends Action
     }
     public function view_all_curses()
     {
-        session_start();
-        if (!$_SESSION['id']) {
-            $this->setHtmlData->signed = 'disabled';
-        }
+
         $viewCurses = Container::getModel('curses');
         $showCurses = $viewCurses->getAllCurses();
         $this->viewData->curses = $showCurses;

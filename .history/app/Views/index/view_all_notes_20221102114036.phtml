@@ -23,7 +23,7 @@
                 <hr>
                 <div>
                     <?php $temp_text = substr($note['note'], 0, 500);
-                    echo preg_replace('/\<\/?[A-Z, a-z, 0-9 \", \=, \:, \/, \.,\s,\-]*\>/', ' ', $temp_text);
+                    echo preg_replace('/\<\/?[A-Z, a-z,0-9 \", \=, \:, \/, \.,\s,\-]*\>/', ' ', $temp_text);
                     ?>
                 </div>
             </div>

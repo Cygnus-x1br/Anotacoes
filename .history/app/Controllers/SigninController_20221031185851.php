@@ -16,6 +16,7 @@ class SigninController extends Action
 
     public function authenticate()
     {
+        //print_r($_POST);
         if (empty($_POST['username']) || empty($_POST['passwd'])) {
             echo 'Digite um nome de usuário válido';
             die();
@@ -26,7 +27,7 @@ class SigninController extends Action
         $user->login();
 
         if ($user->__get('iduser') && $user->__get('username')) {
-
+            
             session_start();
             $_SESSION['id'] = $user->__get('iduser');
             $_SESSION['nome'] = $user->__get('user_name');
