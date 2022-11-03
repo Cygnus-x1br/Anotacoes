@@ -18,7 +18,7 @@
                                             }
                                             echo 'Aula ' . $class_number; ?> - <?= $class['class_title'] ?></h5>
                 <?php if (!empty($class['class_image_path'])) { ?>
-                    <img src="<?= $class['class_image_path'] ?>" class="card-img-top align-self-center show-image" alt="...">
+                    <img src="<?= $class['class_image_path'] ?>" class="card-img-top align-self-center" alt="..." style="width: 50%;" onmouseout="this.style.width='50%'" onmouseover="this.style.width='100%'">
                 <?php } ?>
                 <div class="card-body">
                     <p class="card-text"><?= $class['class_notes'] ?></p>

@@ -6,11 +6,10 @@
 
 .show-image{
   width: 50%;
-  transition-duration: 2s;
-  transition-delay: 0.3s;
 }
 
 .show-image:hover{
   width: 100%;
-  
+  transition-duration: 2s, 2s;
+  transition-delay: 0.3s, 0.3s;
 }
