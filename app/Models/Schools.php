@@ -69,7 +69,6 @@ class Schools extends Model
         $school = "DELETE FROM tb_schools WHERE IDSCHOOL=:idschool";
         $stmt = $this->db->prepare($school);
         $stmt->bindValue(':idschool', $this->__get('idschool'));
-
         $stmt->execute();
 
         return $this;

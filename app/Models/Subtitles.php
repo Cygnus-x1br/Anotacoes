@@ -32,6 +32,7 @@ class Subtitles extends Model
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
     public function getSubtitle()
     {
         $subtitle = "SELECT * FROM tb_curse_subtitle WHERE IDSUBTITLE=:idsubtitle";
@@ -41,6 +42,7 @@ class Subtitles extends Model
 
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
+
     public function addSubtitle()
     {
         $subtitle = "INSERT INTO tb_curse_subtitle(subtitle_number,
@@ -59,6 +61,7 @@ class Subtitles extends Model
 
         return $this;
     }
+
     public function editSubtitle()
     {
         $subtitle = "UPDATE tb_curse_subtitle
@@ -73,17 +76,16 @@ class Subtitles extends Model
         $stmt->bindValue(':subtitle', $this->__get('subtitle'));
         $stmt->bindValue(':subtitle_description', $this->__get('subtitle_description'));
         $stmt->bindValue(':id_subject', $this->__get('id_subject'));
-
         $stmt->execute();
 
         return $this;
     }
+
     public function deleteSubtitle()
     {
         $subtitle = "DELETE FROM tb_curse_subtitle WHERE IDSUBTITLE = :idsubtitle";
         $stmt = $this->db->prepare($subtitle);
         $stmt->bindValue(':idsubtitle', $this->__get('idsubtitle'));
-
         $stmt->execute();
 
         return $this;

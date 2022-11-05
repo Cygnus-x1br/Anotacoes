@@ -39,7 +39,17 @@ class Classes extends Model
     }
     public function getAllClassesFromCurse()
     {
-        $classes = "SELECT *, c.curse_title as curse, c.IDCURSE as idcurse, s.subtitle as subtitle, s.subtitle_number as subtitle_number FROM tb_classes as cl INNER JOIN tb_curses as c ON c.IDCURSE = cl.ID_CURSE LEFT JOIN tb_curse_subtitle as s ON cl.ID_SUBTITLE = s.IDSUBTITLE WHERE cl.ID_CURSE=:id_curse ORDER BY subtitle_number ASC, class_number ASC";
+        $classes = "SELECT *,
+         c.curse_title as curse,
+          c.IDCURSE as idcurse,
+           s.subtitle as subtitle,
+            s.subtitle_number
+             as subtitle_number
+            FROM tb_classes as cl
+            INNER JOIN tb_curses as c ON c.IDCURSE = cl.ID_CURSE
+            LEFT JOIN tb_curse_subtitle as s ON cl.ID_SUBTITLE = s.IDSUBTITLE
+            WHERE cl.ID_CURSE=:id_curse
+            ORDER BY subtitle_number ASC, class_number ASC";
         $stmt = $this->db->prepare($classes);
         $stmt->bindValue(':id_curse', $this->__get('id_curse'));
 
@@ -49,16 +59,21 @@ class Classes extends Model
     }
     public function getLastClasses()
     {
-        $classes = "SELECT *, c.curse_title as curse, c.IDCURSE as idcurse FROM tb_classes INNER JOIN tb_curses as c ON IDCURSE = ID_CURSE ORDER BY IDCLASS DESC LIMIT 3";
+        $classes = "SELECT *, c.curse_title as curse, c.IDCURSE as idcurse
+         FROM tb_classes
+          INNER JOIN tb_curses as c ON IDCURSE = ID_CURSE
+           ORDER BY IDCLASS DESC LIMIT 3";
         $stmt = $this->db->prepare($classes);
-        // $stmt->bindValue(':id_curse', $this->__get('id_curse'));
         $stmt->execute();
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
     public function getClass()
     {
-        $class = "SELECT *, c.curse_title as curse, c.IDCURSE as idcurse FROM tb_classes INNER JOIN tb_curses as c ON IDCURSE = ID_CURSE WHERE IDCLASS=:idclass";
+        $class = "SELECT *, c.curse_title as curse, c.IDCURSE as idcurse
+         FROM tb_classes
+          INNER JOIN tb_curses as c ON IDCURSE = ID_CURSE
+           WHERE IDCLASS=:idclass";
         $stmt = $this->db->prepare($class);
         $stmt->bindValue(':idclass', $this->__get('idclass'));
         $stmt->execute();
@@ -66,11 +81,31 @@ class Classes extends Model
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
-    // Ajustar esses métodos
-
     public function addClass()
     {
-        $class = "INSERT INTO tb_classes(class_number, class_title, class_notes, see_again, ID_CURSE, ID_SUBJECT, class_path, class_image_path, ID_USER, include_date, ID_SUBTITLE) VALUES(:class_number, :class_title, :class_notes, :see_again, :ID_CURSE, :ID_SUBJECT, :class_path, :class_image_path, :ID_USER, NOW(), :id_subtitle)";
+        $class = "INSERT INTO tb_classes(
+            class_number,
+             class_title,
+              class_notes,
+               see_again,
+                ID_CURSE,
+                 ID_SUBJECT,
+                  class_path,
+                   class_image_path,
+                    ID_USER,
+                     include_date,
+                      ID_SUBTITLE)
+             VALUES(:class_number,
+              :class_title,
+               :class_notes,
+                :see_again,
+                 :ID_CURSE,
+                  :ID_SUBJECT,
+                   :class_path,
+                    :class_image_path,
+                     :ID_USER,
+                      NOW(),
+                       :id_subtitle)";
         $stmt = $this->db->prepare($class);
         $stmt->bindValue(':class_number', $this->__get('class_number'));
         $stmt->bindValue(':class_title', $this->__get('class_title'));
@@ -89,7 +124,17 @@ class Classes extends Model
 
     public function editClass()
     {
-        $class = "UPDATE tb_classes SET class_number=:class_number, class_title=:class_title, class_notes=:class_notes, see_again=:see_again, ID_SUBJECT=:id_subject, class_path=:class_path, class_image_path=:class_image_path, ID_USER=:id_user, ID_SUBTITLE=:id_subtitle WHERE IDCLASS = :idclass";
+        $class = "UPDATE tb_classes
+         SET class_number=:class_number,
+          class_title=:class_title,
+           class_notes=:class_notes,
+            see_again=:see_again,
+             ID_SUBJECT=:id_subject,
+              class_path=:class_path,
+               class_image_path=:class_image_path,
+                ID_USER=:id_user,
+                 ID_SUBTITLE=:id_subtitle
+         WHERE IDCLASS = :idclass";
         $stmt = $this->db->prepare($class);
         $stmt->bindValue(':class_number', $this->__get('class_number'));
         $stmt->bindValue(':class_title', $this->__get('class_title'));

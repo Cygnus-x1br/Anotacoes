@@ -29,6 +29,7 @@ class Subjects extends Model
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
     public function getSubject()
     {
         $subjects = "SELECT * FROM tb_subject WHERE IDSUBJECT=:idsubject";
@@ -51,6 +52,7 @@ class Subjects extends Model
 
         return $this;
     }
+
     public function editSubject()
     {
         $subject = "UPDATE tb_subject
@@ -65,6 +67,7 @@ class Subjects extends Model
 
         return $this;
     }
+
     public function deleteSubject()
     {
         $subject = "DELETE FROM tb_subject WHERE IDSUBJECT=:idsubject";

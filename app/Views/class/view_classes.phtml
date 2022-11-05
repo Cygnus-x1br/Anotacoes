@@ -1,5 +1,8 @@
 <div class="container mt-5">
-    <h1 class="text-center display-6"><?= $this->viewData->curse['curse_title'] ?></h1>
+    <div class="row">
+        <img class="col-2" src="<?= $this->viewData->school['school_logo'] ?>" alt="" style="max-width: 200px;">
+        <h1 class="text-center display-6 col align-self-center"><?= $this->viewData->curse['curse_title'] ?></h1>
+    </div>
     <div class="row justify-content-end mb-5 mt-5">
         <div class="col-2 ">
             <a href="add_class?id=<?= $this->viewData->curse['IDCURSE'] ?>" class="btn btn-success ">Adicionar Aula</a>
@@ -18,11 +21,14 @@
                                             }
                                             echo 'Aula ' . $class_number; ?> - <?= $class['class_title'] ?></h5>
                 <?php if (!empty($class['class_image_path'])) { ?>
-                    <img src="<?= $class['class_image_path'] ?>" class="card-img-top align-self-center show-image" alt="...">
+                    <img class="card-img-top align-self-center show-image" src="
+                        <?= $class['class_image_path'] ?>" alt="...">
                 <?php } ?>
                 <div class="card-body">
                     <p class="card-text"><?= $class['class_notes'] ?></p>
-                    <a href="view_class?id=<?= $this->viewData->curse['IDCURSE'] ?>&class=<?= $class['IDCLASS'] ?>" class="btn btn-primary">Ver aula</a>
+                    <a href="view_class?id=
+                        <?= $this->viewData->curse['IDCURSE'] ?>&class=
+                        <?= $class['IDCLASS'] ?>" class="btn btn-primary">Ver aula</a>
                 </div>
                 <div class="card-footer text-muted text-center">
                     <div class="d-flex justify-content-between">

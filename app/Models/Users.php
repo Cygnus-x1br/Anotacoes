@@ -44,7 +44,8 @@ class Users extends Model
 
     public function saveUser()
     {
-        $user = "INSERT INTO tb_users(username, passwd, user_name, permission) VALUES(:username, :passwd, :user_name, :permission)";
+        $user = "INSERT INTO tb_users(username, passwd, user_name, permission)
+         VALUES(:username, :passwd, :user_name, :permission)";
         $stmt = $this->db->prepare($user);
         $stmt->bindValue(':username', $this->__get('username'));
         $stmt->bindValue(':passwd', sha1($this->__get('passwd')));
@@ -85,10 +86,7 @@ class Users extends Model
         $stmt->bindValue(':username', $this->__get('username'));
         $stmt->bindValue(':passwd', sha1($this->__get('passwd')));
         $stmt->execute();
-
         $user_authenticated = $stmt->fetch(\PDO::FETCH_ASSOC);
-
-        // var_dump($user_authenticated);
 
         if ($user_authenticated['username'] && $user_authenticated['IDUSER']) {
             $this->__set('iduser', $user_authenticated['IDUSER']);

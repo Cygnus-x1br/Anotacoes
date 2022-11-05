@@ -70,8 +70,6 @@ class Notes extends Model
         return $this;
     }
 
-
-
     public function deleteNote()
     {
         $note = "DELETE FROM tb_notes WHERE IDNOTE=:idnote";

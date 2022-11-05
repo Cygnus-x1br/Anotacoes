@@ -25,7 +25,8 @@ class Curses extends Model
 
     public function getAllCurses()
     {
-        $curses = "SELECT *, s.ID_SUBJECT as subject FROM tb_curses
+        $curses = "SELECT *, s.ID_SUBJECT as subject
+         FROM tb_curses
          INNER JOIN tba_curse_subject as s ON ID_CURSE=IDCURSE
           ORDER BY curse_title ASC";
         $stmt = $this->db->prepare($curses);
@@ -35,7 +36,8 @@ class Curses extends Model
     }
     public function getCurse()
     {
-        $curse = "SELECT *, s.ID_SUBJECT FROM tb_curses
+        $curse = "SELECT *, s.ID_SUBJECT
+         FROM tb_curses
          INNER JOIN tba_curse_subject as s ON ID_CURSE=IDCURSE
           WHERE IDCURSE=:idcurse";
         $stmt = $this->db->prepare($curse);
@@ -46,19 +48,30 @@ class Curses extends Model
     }
     public function addCurse()
     {
-        $curse = "INSERT INTO tb_curses(curse_title, curse_description, id_school)
-         VALUES(:curse_title, :curse_description, :id_school)";
+        $curse = "INSERT INTO tb_curses(
+            curse_title,
+             curse_description,
+              id_school)
+         VALUES(:curse_title,
+          :curse_description,
+           :id_school)";
         $stmt = $this->db->prepare($curse);
         $stmt->bindValue(':curse_title', $this->__get('curse_title'));
         $stmt->bindValue(':curse_description', $this->__get('curse_description'));
         $stmt->bindValue(':id_school', $this->__get('id_school'));
         $stmt->execute();
-        $curseSelect = "SELECT IDCURSE FROM tb_curses WHERE curse_title = :curse_title";
+        $curseSelect = "SELECT IDCURSE
+         FROM tb_curses
+          WHERE curse_title = :curse_title";
         $stmt = $this->db->prepare($curseSelect);
         $stmt->bindValue('curse_title', $this->__get('curse_title'));
         $stmt->execute();
         $id_curse = $stmt->fetch(\PDO::FETCH_ASSOC);
-        $curseSubject = "INSERT INTO tba_curse_subject(id_curse, id_subject) VALUES(:id_curse, :id_subject)";
+        $curseSubject = "INSERT INTO tba_curse_subject(
+            id_curse,
+             id_subject)
+              VALUES(:id_curse,
+               :id_subject)";
         $stmt = $this->db->prepare($curseSubject);
         $stmt->bindValue(':id_curse', $id_curse['IDCURSE']);
         $stmt->bindValue('id_subject', $this->__get('id_subject'));
@@ -70,7 +83,9 @@ class Curses extends Model
     public function editCurse()
     {
         $curse = "UPDATE tb_curses
-         SET curse_title=:curse_title, curse_description=:curse_description, id_school=:id_school
+         SET curse_title=:curse_title,
+          curse_description=:curse_description,
+           id_school=:id_school
           WHERE IDCURSE = :idcurse";
         $stmt = $this->db->prepare($curse);
         $stmt->bindValue(':idcurse', $this->__get('idcurse'));
@@ -88,7 +103,8 @@ class Curses extends Model
     }
     public function deleteCurse()
     {
-        $curseSubject = "DELETE FROM tba_curse_subject WHERE ID_CURSE=:idcurse";
+        $curseSubject = "DELETE FROM tba_curse_subject
+         WHERE ID_CURSE=:idcurse";
         $stmt = $this->db->prepare($curseSubject);
         $stmt->bindValue(':idcurse', $this->__get('idcurse'));
         $stmt->execute();
@@ -102,7 +118,8 @@ class Curses extends Model
 
     public function curseSubject()
     {
-        $curseSubject = "SELECT * FROM tba_curse_subject WHERE ID_CURSE=:idcurse";
+        $curseSubject = "SELECT * FROM tba_curse_subject
+         WHERE ID_CURSE=:idcurse";
         $stmt = $this->db->prepare($curseSubject);
         $stmt->bindValue(':idcurse', $this->__get['idcurse']);
         $stmt->execute();

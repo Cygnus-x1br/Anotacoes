@@ -15,10 +15,10 @@ class ClassController extends Action
         $list_classes = $classes->getAllClassesFromCurse();
 
         $this->viewData->list_classes = $list_classes;
-        // $this->schools();
         $this->curse();
         $this->subjects();
         $curse_id = $this->viewData->curse['IDCURSE'];
+        $this->school($this->viewData->curse['ID_SCHOOL']);
         $this->subtitles($curse_id);
         $this->render('list_classes');
     }
@@ -31,8 +31,8 @@ class ClassController extends Action
         $list_classes = $classes->getAllClassesFromCurse();
 
         $this->viewData->list_classes = $list_classes;
-        // $this->schools();
         $this->curse();
+        $this->school($this->viewData->curse['ID_SCHOOL']);
         $this->subjects();
         $this->render('view_classes');
     }
@@ -41,12 +41,10 @@ class ClassController extends Action
         SigninController::validaAutenticacao();
         $classes = Container::getModel('classes');
         $classes->__set('idclass', $_GET['class']);
-
         $list_class = $classes->getClass();
-
         $this->viewData->list_class = $list_class;
-        // $this->schools();
         $this->curse();
+        $this->school($this->viewData->curse['ID_SCHOOL']);
         $this->subjects();
         $this->render('view_class');
     }
@@ -69,7 +67,6 @@ class ClassController extends Action
         $class->__set('see_again', (isset($_POST['see_again']) ?? 0));
         $class->__set('id_curse', $_POST['id_curse']);
         $class->__set('id_subject', $_POST['id_subject']);
-        // $class->__set('class_image_path', $_POST['class_image_path']);
         $class->__set('class_path', $_POST['class_path']);
         $class->__set('id_user', $_SESSION['id']);
         $class->__set('id_subtitle', $_POST['id_subtitle']);
@@ -87,14 +84,12 @@ class ClassController extends Action
     {
         if (!empty($_POST['class_title'])) {
             $this->set_class();
-            //print_r($_POST);
         };
     }
 
     public function change_class()
     {
         if (!empty($_POST['class_title'])) {
-            // print_r($_POST);
             $this->set_class('edit');
         };
     }
