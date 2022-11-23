@@ -25,10 +25,9 @@
             <?php } ?>
             <div class="card-body">
                 <p class="card-text"><?= $this->viewData->list_class['class_notes'] ?></p>
-                <?php if (!empty($this->viewData->list_class['class_path'])) { ?>
-                    <a href="<?= $this->viewData->list_class['class_path'] ?>" target='_blank' class="btn btn-primary">Ver projeto</a>
-                <?php } ?>
-                <a href="edit_class?id=<?= $_GET['id'] ?>&class=<?= $_GET['class'] ?>" class="btn btn-secondary">Editar aula</a>
+                <?php if (!empty($this->viewData->list_class['class_path'])){ ?>
+                    <a href="<?= $this->viewData->list_class['class_path'] ?>" class="btn btn-primary">Ver projeto</a>
+                <?php } ? >
             </div>
             <div class="card-footer text-muted text-center">
                 <div class="d-flex justify-content-between">
