@@ -25,6 +25,10 @@ class IndexController extends Action
         $lastClasses = $classes->getLastClasses();
         $this->viewData->classes = $lastClasses;
 
+        $curses = Container::getModel('curses');
+        $reviewCurses = $curses->getReviewCurses();
+        $this->viewData->reviewCurses = $reviewCurses;
+
         $this->render('index');
     }
 

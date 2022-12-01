@@ -172,6 +172,11 @@ class Route extends \MF\Init\Bootstrap
             'controller' => 'CurseController',
             'action' => 'delete_curse'
         );
+        $routes['list_selected_curses'] = array(
+            'route' => '/list_selected_curses',
+            'controller' => 'CurseController',
+            'action' => 'list_selected_curses'
+        );
         $routes['list_curses'] = array(
             'route' => '/list_curses',
             'controller' => 'CurseController',

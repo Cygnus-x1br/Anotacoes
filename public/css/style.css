@@ -14,3 +14,23 @@
   width: 100%;
   
 }
+
+.carousel-img{
+  opacity: 0.5;
+  background-color: black;
+  padding: 25px;
+  
+}
+
+.subject-img{
+  width: 200px;
+}
+
+
+.carousel-item h1{
+  color: #333;
+}
+.carousel-item p{
+  color: #333;
+}
+
