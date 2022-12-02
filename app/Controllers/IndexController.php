@@ -87,4 +87,14 @@ class IndexController extends Action
 
         $this->render('view_all_curses');
     }
+
+    public function search()
+    {
+        $searchCurse = Container::getModel('classes');
+        $searchCurse->__set('search_word', $_POST['search_word']);
+        $resultCurse = $searchCurse->searchClasses();
+        $this->viewData->searchResult = $resultCurse;
+
+        $this->render('search');
+    }
 }

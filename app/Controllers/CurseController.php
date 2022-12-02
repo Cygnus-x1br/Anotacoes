@@ -97,6 +97,8 @@ class CurseController extends Action
         header('Location: list_curses');
     }
 
+
+
     private function subjects()
     {
         $subjects = Container::getModel('subjects');

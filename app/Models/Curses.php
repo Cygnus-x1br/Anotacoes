@@ -13,6 +13,7 @@ class Curses extends Model
     private $id_curse;
     private $id_subject;
     private $review;
+    private $search_word;
 
     public function __get($atribute)
     {
@@ -154,6 +155,8 @@ class Curses extends Model
 
         return $this;
     }
+
+
 
     public function curseSubject()
     {

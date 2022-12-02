@@ -27,6 +27,11 @@ class Route extends \MF\Init\Bootstrap
             'controller' => 'IndexController',
             'action' => 'view_all_curses'
         );
+        $routes['search'] = array(
+            'route' => '/search',
+            'controller' => 'IndexController',
+            'action' => 'search'
+        );
 
         $routes['signin'] = array(
             'route' => '/signin',

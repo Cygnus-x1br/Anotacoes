@@ -1,0 +1,25 @@
+<h2 class="mt-5 text-center">Resultado da busca</h2>
+<hr>
+<main class="container mt-5">
+    <?php foreach ($this->viewData->searchResult as $note) { ?>
+
+        <div class="d-flex flex-row justify-content-between align-items-center">
+            <input type="hidden" name="idclass" value="<?= $note['IDCLASS'] ?>">
+
+            <div class="d-flex flex-column ms-3" style="min-width: 70%">
+                <h2 class="display-6"><?= empty($note['curse']) ? '' : $note['curse'] ?></h2>
+                <div class="d-flex justify-content-between flex-row">
+                    <h2><?= empty($note['class_title']) ? '' : $note['class_title'] ?></h2>
+                    <div class="d-flex justify-content-between flex-row align-items-center col-4">
+                        <a href="view_class?id=<?= $note['idcurse'] ?>&class=<?= $note['idcurse'] ?>" class="btn btn-secondary ms-2">
+                            Ver anotação
+                        </a>
+                        <a href="/" class="btn btn-danger ms-2">Voltar</a>
+                    </div>
+                </div>
+                <div><?= empty($note['class_notes']) ? '' : $note['class_notes'] ?></div>
+            </div>
+        </div>
+        <hr class="featurette-divider">
+    <?php } ?>
+</main>
