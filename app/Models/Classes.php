@@ -160,4 +160,20 @@ class Classes extends Model
 
         return $this;
     }
+
+    public function searchClasses()
+    {
+
+        $searchClasses = "SELECT cl.IDCLASS, cl.class_title, cl.class_notes, cr.IDCURSE as idcurse, cr.curse_title as curse
+        FROM tb_classes as cl
+        INNER JOIN tb_curses as cr ON cr.IDCURSE = cl.ID_CURSE
+        WHERE cl.class_title LIKE :search_word
+        OR cl.class_notes LIKE :search_word";
+        $stmt = $this->db->prepare($searchClasses);
+
+        $stmt->bindValue(':search_word', '%' . $this->__get('search_word') . '%');
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }

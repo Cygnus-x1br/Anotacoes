@@ -113,3 +113,10 @@ ALTER TABLE tb_curse_subtitle
 ADD COLUMN ID_SUBJECT INT NOT NULL;
 ALTER TABLE tb_classes
 ADD COLUMN ID_SUBTITLE INT NOT NULL;
+ALTER TABLE tb_curses
+ADD COLUMN review BOOLEAN DEFAULT 0;
+SELECT cl.IDCLASS,
+    cl.class_title
+FROM tb_classes as cl
+WHERE cl.class_title LIKE '%PHP%'
+    OR cl.class_notes LIKE '%PHP%';

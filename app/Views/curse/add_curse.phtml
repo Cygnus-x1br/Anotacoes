@@ -17,14 +17,24 @@
                                                                 } ?>><?= $school['school_name'] ?></option>
                 <?php } ?>
             </select>
-            <label for="subject" class="form-label me-2">Assunto</label>
-            <select class="form-select mb-3" name="id_subject" id="subject" aria-label="Default select example">
-                <?php foreach ($this->viewData->listagem_assuntos as $assunto) { ?>
-                    <option value="<?= $assunto['IDSUBJECT'] ?>" <?php if ($assunto['IDSUBJECT'] == $this->viewData->curse['ID_SUBJECT']) {
-                                                                        echo 'selected';
-                                                                    } ?>><?= $assunto['subject'] ?></option>
-                <?php } ?>
-            </select>
+            <div class="row">
+                <div class="col-8">
+                    <label for="subject" class="form-label me-2">Assunto</label>
+                    <select class="form-select mb-3" name="id_subject" id="subject" aria-label="Default select example">
+                        <?php foreach ($this->viewData->listagem_assuntos as $assunto) { ?>
+                            <option value="<?= $assunto['IDSUBJECT'] ?>" <?php if ($assunto['IDSUBJECT'] == $this->viewData->curse['ID_SUBJECT']) {
+                                                                                echo 'selected';
+                                                                            } ?>><?= $assunto['subject'] ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="col-1"></div>
+                <div class="form-check form-switch col-2 align-text-bottom">
+                    <br>
+                    <input class="form-check-input" type="checkbox" role="switch" id="review" name="review" value="1" <?= $this->viewData->curse['review'] == 1 ? 'checked' : '' ?>>
+                    <label class="form-check-label" for="review">Ver novamente</label>
+                </div>
+            </div>
 
             <input id="x" value="<?= $this->viewData->curse['curse_description'] ?? '' ?>" type="hidden" name="curse_description">
             <trix-editor input="x" style="min-height: 400px;"></trix-editor>

@@ -27,6 +27,11 @@ class Route extends \MF\Init\Bootstrap
             'controller' => 'IndexController',
             'action' => 'view_all_curses'
         );
+        $routes['search'] = array(
+            'route' => '/search',
+            'controller' => 'IndexController',
+            'action' => 'search'
+        );
 
         $routes['signin'] = array(
             'route' => '/signin',
@@ -171,6 +176,11 @@ class Route extends \MF\Init\Bootstrap
             'route' => '/delete_curse',
             'controller' => 'CurseController',
             'action' => 'delete_curse'
+        );
+        $routes['list_selected_curses'] = array(
+            'route' => '/list_selected_curses',
+            'controller' => 'CurseController',
+            'action' => 'list_selected_curses'
         );
         $routes['list_curses'] = array(
             'route' => '/list_curses',

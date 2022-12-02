@@ -10,8 +10,24 @@ class CurseController extends Action
     public function list_curses()
     {
         SigninController::validaAutenticacao();
+        $this->subjects();
         $curses = Container::getModel('curses');
         $list_curses = $curses->getAllCurses();
+        $this->viewData->list_curses = $list_curses;
+        $this->schools();
+
+        $this->render('list_curses');
+    }
+    public function list_selected_curses()
+    {
+        if ($_POST['id_subject'] === '') {
+            header('Location: list_curses');
+        }
+        SigninController::validaAutenticacao();
+        $this->subjects();
+        $curses = Container::getModel('curses');
+        $curses->__set('id_subject', $_POST['id_subject']);
+        $list_curses = $curses->getSelectedCurses();
         $this->viewData->list_curses = $list_curses;
         $this->schools();
 
@@ -27,6 +43,7 @@ class CurseController extends Action
         $curses->__set('curse_title', $_POST['curse_title']);
         $curses->__set('curse_description', $_POST['curse_description']);
         $curses->__set('id_school', $_POST['id_school']);
+        $curses->__set('review', $_POST['review']);
         $curses->__set('id_subject', $_POST['id_subject']);
         if ($edit == 'edit') {
             $curses->__set('idcurse', $_POST['idcurse']);
@@ -79,6 +96,8 @@ class CurseController extends Action
 
         header('Location: list_curses');
     }
+
+
 
     private function subjects()
     {
