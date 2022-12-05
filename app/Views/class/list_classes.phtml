@@ -34,7 +34,11 @@
                                             $class_number = '0' . $class_number;
                                         }
                                         echo 'Aula ' . $class_number; ?></li>
-                    <li class="col-9"> <?= $class['class_title'] ?></li>
+                    <li class="col-9"> <?= $class['class_title'] ?><span><sup><?php if ($class['see_again']) {
+                                                                                    echo ' <i class="bi bi-star-fill" style="color: #ffcf49; font-size: 12px;"></i>';
+                                                                                } else {
+                                                                                    echo '';
+                                                                                }  ?></sup></span></li>
                     <li class="col-1"> <?php foreach ($this->viewData->listagem_assuntos as $subject) {
                                             if ($subject['IDSUBJECT'] == $class['ID_SUBJECT']) {
                                                 echo $subject['subject'];

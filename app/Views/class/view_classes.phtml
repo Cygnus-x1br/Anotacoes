@@ -19,7 +19,11 @@
                                             while (strlen($class_number) < 3) {
                                                 $class_number = '0' . $class_number;
                                             }
-                                            echo 'Aula ' . $class_number; ?> - <?= $class['class_title'] ?></h5>
+                                            echo 'Aula ' . $class_number; ?> - <?= $class['class_title'] ?><span><sup><?php if ($class['see_again']) {
+                                                                                                                            echo ' <i class="bi bi-star-fill" style="color: #ffcf49; font-size: 12px;"></i>';
+                                                                                                                        } else {
+                                                                                                                            echo '';
+                                                                                                                        }  ?></sup></span></h5>
                 <?php if (!empty($class['class_image_path'])) { ?>
                     <img class="card-img-top align-self-center show-image" src="
                         <?= $class['class_image_path'] ?>" alt="...">
