@@ -29,7 +29,7 @@
                     <label for="subject" class="form-label me-2">Assunto</label>
                     <select class="form-select mb-3" name="id_subject" id="subject" aria-label="Default select example">
                         <?php foreach ($this->viewData->listagem_assuntos as $assunto) { ?>
-                            <option value="<?= $assunto['IDSUBJECT'] ?>" <?php if ($assunto['IDSUBJECT'] == $this->viewData->curse['ID_SUBJECT']) {
+                            <option value="<?= $assunto['IDSUBJECT'] ?>" <?php if ($assunto['IDSUBJECT'] == $this->viewData->class['ID_SUBJECT']) {
                                                                                 echo 'selected';
                                                                             } ?>><?= $assunto['subject'] ?></option>
                         <?php } ?>

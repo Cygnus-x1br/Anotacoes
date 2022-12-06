@@ -20,7 +20,7 @@
 .listagem ul li,
 .listagem-sem-cabecalho ul li {
   display: flex;
-  height: 50px;
+  min-height: 50px;
   align-items: center;
 }
 
