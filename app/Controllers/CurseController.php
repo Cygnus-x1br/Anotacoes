@@ -20,16 +20,17 @@ class CurseController extends Action
     }
     public function list_selected_curses()
     {
-        if ($_POST['id_subject'] === '') {
+        if ($_POST['id_subject'] === '' && $_POST['id_school'] === '') {
             header('Location: list_curses');
         }
         SigninController::validaAutenticacao();
         $this->subjects();
+        $this->schools();
         $curses = Container::getModel('curses');
         $curses->__set('id_subject', $_POST['id_subject']);
+        $curses->__set('id_school', $_POST['id_school']);
         $list_curses = $curses->getSelectedCurses();
         $this->viewData->list_curses = $list_curses;
-        $this->schools();
 
         $this->render('list_curses');
     }

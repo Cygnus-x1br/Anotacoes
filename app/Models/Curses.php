@@ -39,13 +39,26 @@ class Curses extends Model
     }
     public function getSelectedCurses()
     {
-        $curses = "SELECT *, s.ID_SUBJECT as subject
+        $curses = "SELECT *, s.ID_SUBJECT as subject 
          FROM tb_curses
-         INNER JOIN tba_curse_subject as s ON ID_CURSE=IDCURSE";
-        $curses .= " WHERE ID_SUBJECT=:id_subject";
+         INNER JOIN tba_curse_subject as s ON ID_CURSE=IDCURSE WHERE";
+        if(!empty($this->__get('id_subject'))){
+              $curses .= " ID_SUBJECT=:id_subject";
+              if(!empty($this->__get('id_school'))){
+                $curses .= " AND";
+              }
+        }
+        if(!empty($this->__get('id_school'))){
+             $curses .= " ID_SCHOOL=:id_school";
+        }
         $curses .= " ORDER BY curse_title ASC";
         $stmt = $this->db->prepare($curses);
+        if(!empty($this->__get('id_subject'))){
         $stmt->bindValue(':id_subject', $this->__get('id_subject'));
+        }
+        if(!empty($this->__get('id_school'))){
+        $stmt->bindValue(':id_school', $this->__get('id_school'));
+        }
         $stmt->execute();
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);

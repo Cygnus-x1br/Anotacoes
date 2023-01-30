@@ -3,16 +3,27 @@
 
     <div class="row justify-content-end mb-5">
         <form class="col" action="list_selected_curses" method="POST">
+        <div class="row">
             <div class="input-group">
-                <label for="subject" class="form-label me-2">Assunto</label>
-                <select class="form-select" name="id_subject" id="subject" aria-label="Default select example">
-                    <option value=""></option>
-                    <?php foreach ($this->viewData->listagem_assuntos as $assunto) { ?>
-                        <option value="<?= $assunto['IDSUBJECT'] ?>"><?= $assunto['subject'] ?></option>
-                    <?php } ?>
-                </select>
-                <button class="btn btn-outline-secondary" type="submmit">Search</button>
+                    <label for="subject" class="form-label me-2">Assunto</label>
+                    <select class="form-select me-2" name="id_subject" id="subject" aria-label="Default select example">
+                        <option value=""></option>
+                        <?php foreach ($this->viewData->listagem_assuntos as $assunto) { ?>
+                            <option value="<?= $assunto['IDSUBJECT'] ?>"><?= $assunto['subject'] ?></option>
+                        <?php } ?>
+                    </select>
+                
+                    <label for="school" class="form-label me-2">Escola</label>
+                    <select class="form-select col-4" name="id_school" id="school" aria-label="Default select example">
+                        <option value=""></option>
+                        <?php foreach ($this->viewData->schools_list as $school) { ?>
+                            <option value="<?= $school['IDSCHOOL'] ?>"><?= $school['school_name'] ?></option>
+                        <?php } ?>
+                    </select>
+                    <button class="btn btn-outline-secondary" type="submmit">Search</button>
+                
             </div>
+        </div>    
         </form>
         <div class="col-2 ">
 
