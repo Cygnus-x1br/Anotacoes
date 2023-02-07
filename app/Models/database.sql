@@ -115,15 +115,60 @@ ALTER TABLE tb_classes
 ADD COLUMN ID_SUBTITLE INT NOT NULL;
 ALTER TABLE tb_curses
 ADD COLUMN review BOOLEAN DEFAULT 0;
-
+--
 SELECT cl.IDCLASS,
-    cl.class_title
+cl.class_title
 FROM tb_classes as cl
 WHERE cl.class_title LIKE '%PHP%'
     OR cl.class_notes LIKE '%PHP%';
-
-SELECT *, s.ID_SUBJECT as subject 
-         FROM tb_curses
-         INNER JOIN tba_curse_subject as s ON ID_CURSE=IDCURSE WHERE
-         ID_SUBJECT=*
-         AND ID_SCHOOL=*;
+--
+SELECT *,
+s.ID_SUBJECT as subject
+FROM tb_curses
+    INNER JOIN tba_curse_subject as s ON ID_CURSE = IDCURSE
+WHERE ID_SUBJECT = *
+    AND ID_SCHOOL = *;
+--
+SELECT IDCLASS, class_number, c.curse_title as curse, c.IDCURSE as idcurse
+FROM tb_classes
+    INNER JOIN tb_curses as c ON IDCURSE = ID_CURSE
+WHERE IDCURSE = 4;
+--
+SELECT IDCLASS, class_number,
+c.curse_title as curse,
+c.IDCURSE as idcurse
+FROM tb_classes
+    INNER JOIN tb_curses as c ON IDCURSE = ID_CURSE
+WHERE IDCURSE = 4
+    AND class_number = 432;
+SELECT IDCLASS,
+    class_number,
+    c.curse_title as curse,
+    c.IDCURSE as idcurse
+FROM tb_classes
+    INNER JOIN tb_curses as c ON IDCURSE = ID_CURSE
+WHERE IDCURSE = 4
+    AND class_number > (432 -10)
+LIMIT 2;
+--Aula anterior
+SELECT IDCLASS,
+    class_number,
+    c.curse_title as curse,
+    c.IDCURSE as idcurse
+FROM tb_classes
+    INNER JOIN tb_curses as c ON IDCURSE = ID_CURSE
+WHERE IDCURSE = 4
+    AND class_number < 22
+ORDER BY class_number DESC
+LIMIT 1;
+--Proxima aula
+SELECT IDCLASS,
+    class_number,
+    c.curse_title as curse,
+    c.IDCURSE as idcurse
+FROM tb_classes
+    INNER JOIN tb_curses as c ON IDCURSE = ID_CURSE
+WHERE IDCURSE = 4
+    AND class_number > 22
+ORDER BY class_number ASC
+LIMIT 1;
