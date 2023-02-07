@@ -1,4 +1,4 @@
-<?php echo
+<?php
  namespace App;
 
  define('DB_HOST', 'jmarc.com.br');

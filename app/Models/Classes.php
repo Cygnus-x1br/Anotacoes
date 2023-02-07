@@ -81,6 +81,33 @@ class Classes extends Model
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
+    public function getBackClass()
+    {
+        $back = "SELECT IDCLASS, class_number 
+        FROM tb_classes 
+        WHERE ID_CURSE = :id_curse AND class_number < :class_number 
+        ORDER BY class_number DESC LIMIT 1";
+        $stmt = $this->db->prepare($back);
+        $stmt->bindValue(':id_curse', $this->__get('id_curse'));
+        $stmt->bindValue(':class_number', $this->__get('class_number'));
+        $stmt->execute();
+
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+    public function getNextClass()
+    {
+        $next = "SELECT IDCLASS, class_number 
+        FROM tb_classes 
+        WHERE ID_CURSE = :id_curse AND class_number > :class_number 
+        ORDER BY class_number ASC LIMIT 1";
+        $stmt = $this->db->prepare($next);
+        $stmt->bindValue(':id_curse', $this->__get('id_curse'));
+        $stmt->bindValue(':class_number', $this->__get('class_number'));
+        $stmt->execute();
+
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
     public function addClass()
     {
         $class = "INSERT INTO tb_classes(

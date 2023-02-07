@@ -17,6 +17,7 @@
     <div class="listagem-sem-cabecalho row">
         <?php $subtitle_temp = ''; ?>
         <?php foreach ($this->viewData->list_classes as $class) { ?>
+
             <?php if ($class['ID_SUBTITLE'] != '') {
                 if ($class['ID_SUBTITLE'] != $subtitle_temp) {
                     $subtitle_temp = $class['ID_SUBTITLE'];
@@ -27,6 +28,7 @@
                     }
                 }
             } ?>
+
             <ul class="row justify-content-between">
                 <div class="col-9 row flex-fill">
                     <li class="col-2"><?php $class_number = $class['class_number'];

@@ -34,6 +34,8 @@ class ClassController extends Action
         $this->curse();
         $this->school($this->viewData->curse['ID_SCHOOL']);
         $this->subjects();
+        $curse_id = $this->viewData->curse['IDCURSE'];
+        $this->subtitles($curse_id);
         $this->render('view_classes');
     }
     public function view_class()
@@ -42,7 +44,13 @@ class ClassController extends Action
         $classes = Container::getModel('classes');
         $classes->__set('idclass', $_GET['class']);
         $list_class = $classes->getClass();
+        $classes->__set('id_curse', $list_class['ID_CURSE']);
+        $classes->__set('class_number', $list_class['class_number']);
+        $back_class = $classes->getBackClass();
+        $next_class = $classes->getNextClass();
         $this->viewData->list_class = $list_class;
+        $this->viewData->back_class = $back_class;
+        $this->viewData->next_class = $next_class;
         $this->curse();
         $this->school($this->viewData->curse['ID_SCHOOL']);
         $this->subjects();
