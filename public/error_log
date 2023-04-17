@@ -1,0 +1,41 @@
+[17-Apr-2023 12:53:17 UTC] PHP Warning:  Undefined array key "id" in /home/jean/notes.jmarc.com.br/Anotacoes/app/Controllers/IndexController.php on line 13
+[17-Apr-2023 12:53:17 UTC] PHP Fatal error:  Uncaught Error: Class "PDO" not found in /home/jean/notes.jmarc.com.br/Anotacoes/app/Connection.php:14
+Stack trace:
+#0 /home/jean/notes.jmarc.com.br/Anotacoes/vendor/MF/Model/Container.php(11): App\Connection::getDB()
+#1 /home/jean/notes.jmarc.com.br/Anotacoes/app/Controllers/IndexController.php(16): MF\Model\Container::getModel('notes')
+#2 /home/jean/notes.jmarc.com.br/Anotacoes/vendor/MF/Init/Bootstrap.php(37): App\Controllers\IndexController->index()
+#3 /home/jean/notes.jmarc.com.br/Anotacoes/vendor/MF/Init/Bootstrap.php(16): MF\Init\Bootstrap->run('/')
+#4 /home/jean/notes.jmarc.com.br/Anotacoes/public/index.php(5): MF\Init\Bootstrap->__construct()
+#5 {main}
+  thrown in /home/jean/notes.jmarc.com.br/Anotacoes/app/Connection.php on line 14
+[17-Apr-2023 12:53:29 UTC] PHP Warning:  Undefined array key "id" in /home/jean/notes.jmarc.com.br/Anotacoes/app/Controllers/IndexController.php on line 13
+[17-Apr-2023 12:53:29 UTC] PHP Fatal error:  Uncaught Error: Class "PDO" not found in /home/jean/notes.jmarc.com.br/Anotacoes/app/Connection.php:14
+Stack trace:
+#0 /home/jean/notes.jmarc.com.br/Anotacoes/vendor/MF/Model/Container.php(11): App\Connection::getDB()
+#1 /home/jean/notes.jmarc.com.br/Anotacoes/app/Controllers/IndexController.php(16): MF\Model\Container::getModel('notes')
+#2 /home/jean/notes.jmarc.com.br/Anotacoes/vendor/MF/Init/Bootstrap.php(37): App\Controllers\IndexController->index()
+#3 /home/jean/notes.jmarc.com.br/Anotacoes/vendor/MF/Init/Bootstrap.php(16): MF\Init\Bootstrap->run('/')
+#4 /home/jean/notes.jmarc.com.br/Anotacoes/public/index.php(5): MF\Init\Bootstrap->__construct()
+#5 {main}
+  thrown in /home/jean/notes.jmarc.com.br/Anotacoes/app/Connection.php on line 14
+[17-Apr-2023 12:53:45 UTC] PHP Warning:  Undefined array key "id" in /home/jean/notes.jmarc.com.br/Anotacoes/app/Controllers/IndexController.php on line 13
+[17-Apr-2023 12:53:45 UTC] PHP Fatal error:  Uncaught Error: Class "PDO" not found in /home/jean/notes.jmarc.com.br/Anotacoes/app/Connection.php:14
+Stack trace:
+#0 /home/jean/notes.jmarc.com.br/Anotacoes/vendor/MF/Model/Container.php(11): App\Connection::getDB()
+#1 /home/jean/notes.jmarc.com.br/Anotacoes/app/Controllers/IndexController.php(16): MF\Model\Container::getModel('notes')
+#2 /home/jean/notes.jmarc.com.br/Anotacoes/vendor/MF/Init/Bootstrap.php(37): App\Controllers\IndexController->index()
+#3 /home/jean/notes.jmarc.com.br/Anotacoes/vendor/MF/Init/Bootstrap.php(16): MF\Init\Bootstrap->run('/')
+#4 /home/jean/notes.jmarc.com.br/Anotacoes/public/index.php(5): MF\Init\Bootstrap->__construct()
+#5 {main}
+  thrown in /home/jean/notes.jmarc.com.br/Anotacoes/app/Connection.php on line 14
+[17-Apr-2023 12:55:06 UTC] PHP Warning:  Undefined array key "id" in /home/jean/notes.jmarc.com.br/Anotacoes/app/Controllers/IndexController.php on line 13
+[17-Apr-2023 12:55:08 UTC] PHP Warning:  Undefined variable $controller in /home/jean/notes.jmarc.com.br/Anotacoes/vendor/MF/Init/Bootstrap.php on line 40
+[17-Apr-2023 12:55:26 UTC] PHP Warning:  Undefined array key "id" in /home/jean/notes.jmarc.com.br/Anotacoes/app/Controllers/SigninController.php on line 53
+[17-Apr-2023 12:55:27 UTC] PHP Warning:  Undefined variable $controller in /home/jean/notes.jmarc.com.br/Anotacoes/vendor/MF/Init/Bootstrap.php on line 40
+[17-Apr-2023 12:55:34 UTC] PHP Warning:  Undefined property: stdClass::$signed in /home/jean/notes.jmarc.com.br/Anotacoes/app/Views/layout.phtml on line 39
+[17-Apr-2023 12:55:34 UTC] PHP Warning:  Undefined property: stdClass::$signed in /home/jean/notes.jmarc.com.br/Anotacoes/app/Views/layout.phtml on line 42
+[17-Apr-2023 12:55:34 UTC] PHP Warning:  Undefined property: stdClass::$signed in /home/jean/notes.jmarc.com.br/Anotacoes/app/Views/layout.phtml on line 47
+[17-Apr-2023 12:55:34 UTC] PHP Warning:  Undefined property: stdClass::$signed in /home/jean/notes.jmarc.com.br/Anotacoes/app/Views/index/index.phtml on line 20
+[17-Apr-2023 12:55:34 UTC] PHP Warning:  Undefined property: stdClass::$signed in /home/jean/notes.jmarc.com.br/Anotacoes/app/Views/index/index.phtml on line 34
+[17-Apr-2023 12:55:34 UTC] PHP Warning:  Undefined property: stdClass::$signed in /home/jean/notes.jmarc.com.br/Anotacoes/app/Views/index/index.phtml on line 49
+[17-Apr-2023 12:55:35 UTC] PHP Warning:  Undefined variable $controller in /home/jean/notes.jmarc.com.br/Anotacoes/vendor/MF/Init/Bootstrap.php on line 40
