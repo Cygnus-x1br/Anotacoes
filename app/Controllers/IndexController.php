@@ -10,7 +10,7 @@ class IndexController extends Action
     public function index()
     {
         session_start();
-        if (!$_SESSION['id']) {
+        if (!isset($_SESSION['id'])) {
             $this->setHtmlData->signed = 'disabled';
         }
         $last_texts = Container::getModel('notes');

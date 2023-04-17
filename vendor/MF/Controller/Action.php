@@ -6,6 +6,7 @@ abstract class Action
 {
 
     protected $viewData;
+    protected $setHtmlData;
 
     public function __construct()
     {
