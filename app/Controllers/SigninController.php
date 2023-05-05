@@ -27,7 +27,7 @@ class SigninController extends Action
 
         if ($user->__get('iduser') && $user->__get('username')) {
 
-            session_start();
+            session_start(['cookie_lifetime' => 86400,]);
             $_SESSION['id'] = $user->__get('iduser');
             $_SESSION['nome'] = $user->__get('user_name');
             $_SESSION['permissao'] = $user->__get('permission');
