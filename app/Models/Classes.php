@@ -191,7 +191,7 @@ class Classes extends Model
     public function searchClasses()
     {
 
-        $searchClasses = "SELECT cl.IDCLASS, cl.class_title, cl.class_notes, cr.IDCURSE as idcurse, cr.curse_title as curse
+        $searchClasses = "SELECT cl.IDCLASS as idclass, cl.class_title, cl.class_notes, cr.IDCURSE as idcurse, cr.curse_title as curse
         FROM tb_classes as cl
         INNER JOIN tb_curses as cr ON cr.IDCURSE = cl.ID_CURSE
         WHERE cl.class_title LIKE :search_word
