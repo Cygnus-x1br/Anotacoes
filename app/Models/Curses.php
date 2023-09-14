@@ -8,6 +8,7 @@ class Curses extends Model
 {
     private $idcurse;
     private $curse_title;
+    private $curse_code;
     private $curse_description;
     private $id_school;
     private $id_curse;
@@ -42,22 +43,22 @@ class Curses extends Model
         $curses = "SELECT *, s.ID_SUBJECT as subject 
          FROM tb_curses
          INNER JOIN tba_curse_subject as s ON ID_CURSE=IDCURSE WHERE";
-        if(!empty($this->__get('id_subject'))){
-              $curses .= " ID_SUBJECT=:id_subject";
-              if(!empty($this->__get('id_school'))){
+        if (!empty($this->__get('id_subject'))) {
+            $curses .= " ID_SUBJECT=:id_subject";
+            if (!empty($this->__get('id_school'))) {
                 $curses .= " AND";
-              }
+            }
         }
-        if(!empty($this->__get('id_school'))){
-             $curses .= " ID_SCHOOL=:id_school";
+        if (!empty($this->__get('id_school'))) {
+            $curses .= " ID_SCHOOL=:id_school";
         }
         $curses .= " ORDER BY curse_title ASC";
         $stmt = $this->db->prepare($curses);
-        if(!empty($this->__get('id_subject'))){
-        $stmt->bindValue(':id_subject', $this->__get('id_subject'));
+        if (!empty($this->__get('id_subject'))) {
+            $stmt->bindValue(':id_subject', $this->__get('id_subject'));
         }
-        if(!empty($this->__get('id_school'))){
-        $stmt->bindValue(':id_school', $this->__get('id_school'));
+        if (!empty($this->__get('id_school'))) {
+            $stmt->bindValue(':id_school', $this->__get('id_school'));
         }
         $stmt->execute();
 
@@ -98,15 +99,18 @@ class Curses extends Model
     {
         $curse = "INSERT INTO tb_curses(
             curse_title,
+            curse_code,
              curse_description,
               id_school,
                review)
          VALUES(:curse_title,
+         :curse_code,
           :curse_description,
            :id_school,
             :review)";
         $stmt = $this->db->prepare($curse);
         $stmt->bindValue(':curse_title', $this->__get('curse_title'));
+        $stmt->bindValue(':curse_code', $this->__get('curse_code'));
         $stmt->bindValue(':curse_description', $this->__get('curse_description'));
         $stmt->bindValue(':id_school', $this->__get('id_school'));
         $stmt->bindValue(':review', $this->__get('review'));
@@ -135,6 +139,7 @@ class Curses extends Model
     {
         $curse = "UPDATE tb_curses
          SET curse_title=:curse_title,
+         curse_code=:curse_code,
           curse_description=:curse_description,
            id_school=:id_school,
             review=:review
@@ -142,6 +147,7 @@ class Curses extends Model
         $stmt = $this->db->prepare($curse);
         $stmt->bindValue(':idcurse', $this->__get('idcurse'));
         $stmt->bindValue(':curse_title', $this->__get('curse_title'));
+        $stmt->bindValue(':curse_code', $this->__get('curse_code'));
         $stmt->bindValue(':curse_description', $this->__get('curse_description'));
         $stmt->bindValue(':id_school', $this->__get('id_school'));
         $stmt->bindValue(':review', $this->__get('review'));

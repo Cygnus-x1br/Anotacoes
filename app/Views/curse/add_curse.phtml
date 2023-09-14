@@ -5,9 +5,18 @@
 
         <form action="<?= isset($this->viewData->curse) ? 'change_curse' : 'save_curse' ?>" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="idcurse" value="<?= $this->viewData->curse['IDCURSE'] ?? '' ?>">
+            <div class="row">
+                <div class="col-8">
 
-            <label for="curse_title" class="form-label">Titulo do Curso</label>
-            <input type="text" class="form-control" name="curse_title" id="curse_title" value="<?= $this->viewData->curse['curse_title'] ?? '' ?>">
+
+                    <label for="curse_title" class="form-label">Titulo do Curso</label>
+                    <input type="text" class="form-control" name="curse_title" id="curse_title" value="<?= $this->viewData->curse['curse_title'] ?? '' ?>">
+                </div>
+                <div class="col-4">
+                    <label for="curse_code" class="form-label">Código do Curso</label>
+                    <input type="text" class="form-control" name="curse_code" id="curse_code" value="<?= $this->viewData->curse['curse_code'] ?? '' ?>">
+                </div>
+            </div>
 
             <label for="school" class="form-label me-2">Plataforma</label>
             <select class="form-select" name="id_school" id="school" aria-label="Default select example">

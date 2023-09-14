@@ -42,6 +42,7 @@ class CurseController extends Action
         $curses = Container::getModel('curses');
 
         $curses->__set('curse_title', $_POST['curse_title']);
+        $curses->__set('curse_code', $_POST['curse_code']);
         $curses->__set('curse_description', $_POST['curse_description']);
         $curses->__set('id_school', $_POST['id_school']);
         $curses->__set('review', $_POST['review']);
