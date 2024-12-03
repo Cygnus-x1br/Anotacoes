@@ -45,7 +45,10 @@
                     <label class="form-check-label" for="see_again">Ver novamente</label>
                 </div>
             </div>
-            <input id="x" value="<?php echo htmlentities($this->viewData->class['class_notes']) ?? '' ?>" type="hidden" name="class_notes">
+            <input id="x" value="<?php if (isset($this->viewData->class)) : echo htmlentities($this->viewData->class['class_notes']);
+                                    else : '';
+                                    endif ?>"
+                type="hidden" name="class_notes">
             <trix-editor input="x" style="min-height: 400px;"></trix-editor>
             <label for="class_image_path" class="form-label">Imagem da aula</label>
             <?php if (isset($this->viewData->class)) : ?>
