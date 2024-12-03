@@ -10,7 +10,7 @@ class Classes extends Model
     private $class_number;
     private $class_title;
     private $class_notes;
-    private $see_again;
+    private $see_again = 0;
     private $id_curse;
     private $id_subject;
     private $class_path = '';
