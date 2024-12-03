@@ -14,11 +14,12 @@
             <label for="subtitle" class="form-label me-2">Subtitulo</label>
             <select class="form-select mb-3" name="id_subtitle" id="subtitle" aria-label="Default select example">
                 <option value=""></option>
-                <?php foreach ($this->viewData->subtitles as $subtitle) { ?>
-                    <option value="<?= $subtitle['IDSUBTITLE'] ?>" <?php if ($subtitle['IDSUBTITLE'] == $this->viewData->class['ID_SUBTITLE']) {
-                                                                        echo 'selected';
-                                                                    } ?>><?= $subtitle['subtitle_number'] ?> - <?= $subtitle['subtitle'] ?></option>
-                <?php } ?>
+                <?php foreach ($this->viewData->subtitles as $subtitle) : ?>
+                    <option value="<?= $subtitle['IDSUBTITLE'] ?>"
+                        <?php if (isset($this->viewData->class) && $subtitle['IDSUBTITLE'] == $this->viewData->class['ID_SUBTITLE']) :
+                            echo 'selected';
+                        endif ?>><?= $subtitle['subtitle_number'] ?> - <?= $subtitle['subtitle'] ?></option>
+                <?php endforeach ?>
             </select>
             <div class="row">
                 <div class="col-4">
@@ -28,27 +29,30 @@
                 <div class="col-6">
                     <label for="subject" class="form-label me-2">Assunto</label>
                     <select class="form-select mb-3" name="id_subject" id="subject" aria-label="Default select example">
-                        <?php foreach ($this->viewData->listagem_assuntos as $assunto) { ?>
-                            <option value="<?= $assunto['IDSUBJECT'] ?>" <?php if ($assunto['IDSUBJECT'] == $this->viewData->class['ID_SUBJECT']) {
-                                                                                echo 'selected';
-                                                                            } ?>><?= $assunto['subject'] ?></option>
-                        <?php } ?>
+                        <?php foreach ($this->viewData->listagem_assuntos as $assunto) : ?>
+                            <option value="<?= $assunto['IDSUBJECT'] ?>"
+                                <?php if (isset($this->viewData->class) && $assunto['IDSUBJECT'] == $this->viewData->class['ID_SUBJECT']) :
+                                    echo 'selected';
+                                endif ?>><?= $assunto['subject'] ?></option>
+                        <?php endforeach ?>
                     </select>
                 </div>
                 <div class="form-check form-switch col-2 align-text-bottom">
                     <br>
-                    <input class="form-check-input" type="checkbox" role="switch" id="see_again" name="see_again" value="1" <?= $this->viewData->class['see_again'] == 1 ? 'checked' : '' ?>>
+                    <input class="form-check-input" type="checkbox" role="switch" id="see_again" aria-checked="false" name="see_again" value="1"
+                        <?php if (isset($this->viewData->class) && $this->viewData->class['see_again'] == 1) : echo 'checked';
+                        endif ?>>
                     <label class="form-check-label" for="see_again">Ver novamente</label>
                 </div>
             </div>
             <input id="x" value="<?php echo htmlentities($this->viewData->class['class_notes']) ?? '' ?>" type="hidden" name="class_notes">
             <trix-editor input="x" style="min-height: 400px;"></trix-editor>
             <label for="class_image_path" class="form-label">Imagem da aula</label>
-            <?php if (isset($this->viewData->class)) { ?>
+            <?php if (isset($this->viewData->class)) : ?>
                 <div class="alert alert-primary" role="alert">
                     <input type="hidden" name="class_image_path" value="<?= $this->viewData->class['class_image_path'] ?>">
                     <p>Last saved file: <span><?= $this->viewData->class['class_image_path'] ?? 'No file saved' ?></span></p>
-                <?php } ?>
+                <?php endif ?>
                 </div>
                 <input type="file" class="form-control" id="class_image_path" aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="class_image_path" accept="image/jpeg,.gif,.png">
                 <label for="class_path" class="form-label">Path para os arquivos da aula</label>
