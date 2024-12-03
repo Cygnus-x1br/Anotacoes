@@ -72,7 +72,7 @@ class ClassController extends Action
         $class->__set('class_number', $_POST['class_number']);
         $class->__set('class_title', $_POST['class_title']);
         $class->__set('class_notes', $_POST['class_notes']);
-        $class->__set('see_again', (isset($_POST['see_again']) ?? 0));
+        $class->__set('see_again', !empty($_POST['see_again']) ?? 0);
         $class->__set('id_curse', $_POST['id_curse']);
         $class->__set('id_subject', $_POST['id_subject']);
         $class->__set('class_path', $_POST['class_path']);
@@ -92,14 +92,14 @@ class ClassController extends Action
     {
         if (!empty($_POST['class_title'])) {
             $this->set_class();
-        };
+        }
     }
 
     public function change_class()
     {
         if (!empty($_POST['class_title'])) {
             $this->set_class('edit');
-        };
+        }
     }
 
     public function add_class()
